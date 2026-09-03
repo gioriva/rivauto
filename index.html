@@ -33,6 +33,9 @@
   }
   .k{fill:var(--ink)}
   .r{fill:var(--accent)}
+  @media (max-width:640px){
+    .mark svg{width:82vw}
+  }
   .ai{font-family:"Jost",system-ui,sans-serif;font-weight:600;letter-spacing:-0.02em}
 </style>
 </head>
@@ -58,7 +61,8 @@
 <script>
 (function(){
   const c=document.getElementById('c'),ctx=c.getContext('2d');
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const slow=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const speed=slow?0.004:0.01;
   let w,h,t=0,raf;
 
   const P=(1+Math.sqrt(5))/2,V=[];
@@ -136,12 +140,13 @@
     });
   }
 
-  function loop(){t+=0.01;draw();raf=requestAnimationFrame(loop);}
+  function loop(){t+=speed;draw();raf=requestAnimationFrame(loop);}
   addEventListener('resize',resize,{passive:true});
   resize();
-  if(!reduce)loop();
+  loop();
   document.addEventListener('visibilitychange',()=>{
-    if(document.hidden)cancelAnimationFrame(raf);else if(!reduce)loop();
+    cancelAnimationFrame(raf);
+    if(!document.hidden)loop();
   });
 })();
 </script>
