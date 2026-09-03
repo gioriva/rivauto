@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rivauto.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0B1016;--ink:#EEF2F6;--accent:#BF1B2C}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:var(--bg)}
+  canvas{position:fixed;inset:0;width:100%;height:100%;display:block}
+  .mark{
+    position:fixed;inset:0;display:grid;place-items:center;
+    user-select:none;
+  }
+  .mark svg{
+    width:min(46vw,480px);height:auto;display:block;
+    filter:drop-shadow(0 0 28px rgba(11,16,22,.95));
+  }
+  .k{fill:var(--ink)}
+  .r{fill:var(--accent)}
+  .ai{font-family:"Jost",system-ui,sans-serif;font-weight:600;letter-spacing:-0.02em}
+</style>
+</head>
+<body>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<div class="mark">
+<svg viewBox="35 38 1500 256" role="img" aria-label="rivauto.ai" xmlns="http://www.w3.org/2000/svg">
+<path class="k" d="M 260.2 254.4 L 224.2 254.4 L 224.2 45.6 L 260.2 45.6 Z"/>
+<path class="k" d="M 381.5 265.8 L 272 45.6 L 313.8 45.6 L 381.5 182.9 L 449.7 45.6 L 489.2 45.6 Z"/>
+<path class="k" d="M 893.3 254.4 L 857.6 254.4 L 857.6 77.9 L 802 77.9 L 802 45.6 L 948.8 45.6 L 948.8 77.9 L 893.3 77.9 Z"/>
+<path class="k" d="M 1045.7 76.1 C 1031.6 76.1 1018.7 79.4 1007.3 85.8 C 995.9 92.1 986.9 101 980.4 112.2 C 974 123.4 970.7 136.1 970.7 150 C 970.7 163.9 974 176.6 980.4 187.8 C 986.9 199 995.9 207.9 1007.3 214.3 C 1018.7 220.7 1031.6 223.9 1045.7 223.9 C 1059.8 223.9 1072.6 220.7 1083.8 214.3 C 1095 207.9 1104 199 1110.4 187.8 C 1116.9 176.6 1120.2 163.9 1120.2 150 C 1120.2 136.1 1116.9 123.4 1110.4 112.2 C 1104 101 1095 92.1 1083.8 85.8 C 1072.6 79.4 1059.8 76.1 1045.7 76.1 M 1045.7 256.8 C 1024.9 256.8 1005.8 252.1 989 242.9 C 972.2 233.7 958.8 220.8 949.2 204.6 C 939.6 188.3 934.7 170 934.7 150 C 934.7 130.1 939.6 111.7 949.2 95.5 C 958.8 79.2 972.2 66.3 989 57.1 C 1005.8 48 1024.9 43.3 1045.7 43.3 C 1066.4 43.3 1085.4 48 1102.2 57.1 C 1119 66.4 1132.4 79.2 1141.9 95.3 C 1151.4 111.5 1156.2 129.9 1156.2 150 C 1156.2 170.2 1151.4 188.6 1141.9 204.7 C 1132.4 220.9 1119 233.7 1102.2 242.9 C 1085.4 252.1 1066.4 256.8 1045.7 256.8"/>
+<path class="k" d="M 161.9 184.9 C 174.6 179.6 184.8 171.7 192 161.3 C 200.1 149.8 204.2 135.7 204.2 119.5 C 204.2 96.6 196.2 78.3 180.4 65.2 C 164.9 52.2 143.4 45.6 116.5 45.6 L 39.9 45.6 L 39.9 254.4 L 75.9 254.4 L 75.9 77.9 L 115.6 77.9 C 132.9 77.9 146.2 81.5 155.1 88.7 C 163.9 95.9 168.2 105.9 168.2 119.5 C 168.2 133.1 163.9 143.2 155.1 150.4 C 146.2 157.7 132.9 161.4 115.6 161.4 L 105.1 161.4 L 170.8 254.4 L 211 254.4 Z"/>
+<path class="k" d="M 444.3 205 C 453.2 205 461.8 207.4 469.3 212.1 L 480.8 208.4 L 520.5 128.5 L 549.2 186.9 L 585.1 175.6 L 520.4 45.6 L 442.5 205.1 C 443.1 205 443.7 205 444.3 205"/>
+<path class="k" d="M 571.4 232 L 588.1 265.8 L 630 265.8 L 605.6 216.9 Z"/>
+<path class="k" d="M 646.4 156.4 L 646.4 45.6 L 610.4 45.6 L 610.4 163.9 C 610.4 165.1 610.5 166.4 610.5 167.7 Z"/>
+<path class="r" d="M 742.9 136.4 L 646.5 166.7 L 627.8 172.6 L 474.6 220.8 L 467.6 223 C 461.2 218 453.1 214.9 444.3 214.9 C 443.1 214.9 441.9 215 440.7 215.1 C 421.7 216.9 406.8 232.8 406.8 252.2 C 406.8 272.8 423.6 289.5 444.3 289.5 C 462 289.5 476.8 277.3 480.8 260.9 L 580.6 217.1 L 601.2 208 L 639.6 191.1 L 649 187 L 742.9 145.8 Z"/>
+<path class="k" d="M 753 45.6 L 753 162.7 C 753 183.6 748.4 199.2 739.3 209.1 C 730.2 218.9 716.9 223.9 699.6 223.9 C 675.6 223.9 659.9 214.9 652.1 196.5 L 619.3 210.9 C 623 219.2 627.9 226.4 633.9 232.6 C 649.5 248.6 671.5 256.8 699.3 256.8 C 727 256.8 749 248.7 764.6 232.8 C 780.2 216.9 788.1 193.7 788.1 163.9 L 788.1 45.6 Z"/>
+<text class="ai r" x="1180" y="254.4" font-size="290">.ai</text>
+</svg>
+</div>
+
+<script>
+(function(){
+  const c=document.getElementById('c'),ctx=c.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w,h,t=0,raf;
+
+  const P=(1+Math.sqrt(5))/2,V=[];
+  [[0,1,P],[0,1,-P],[0,-1,P],[0,-1,-P]].forEach(v=>{
+    V.push(v,[v[1],v[2],v[0]],[v[2],v[0],v[1]]);
+  });
+  const E=[];
+  for(let i=0;i<12;i++)for(let j=i+1;j<12;j++){
+    const d=Math.hypot(V[i][0]-V[j][0],V[i][1]-V[j][1],V[i][2]-V[j][2]);
+    if(Math.abs(d-2)<1e-6)E.push([i,j]);
+  }
+
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    w=innerWidth;h=innerHeight;
+    c.width=w*dpr;c.height=h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    draw();
+  }
+
+  function rot(v,a,b){
+    let [x,y,z]=v;
+    let ca=Math.cos(a),sa=Math.sin(a);
+    [x,z]=[x*ca-z*sa,x*sa+z*ca];
+    let cb=Math.cos(b),sb=Math.sin(b);
+    [y,z]=[y*cb-z*sb,y*sb+z*cb];
+    return [x,y,z];
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    const cx=w/2,cy=h/2,f=Math.min(w,h)*0.9;
+
+    const camY=1.4,zScroll=(t*1.2)%1;
+    ctx.lineWidth=1;
+    for(let i=0;i<=24;i++){
+      const z=i-zScroll+1;
+      const s=f/(z+2);
+      const y=cy+camY*s;
+      const a=0.16*(1-i/24);
+      ctx.strokeStyle='rgba(120,140,160,'+a+')';
+      ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();
+    }
+    for(let x=-14;x<=14;x++){
+      const zn=1,zf=26;
+      const sn=f/(zn+2),sf=f/(zf+2);
+      const grad=ctx.createLinearGradient(0,cy+camY*sn,0,cy+camY*sf);
+      grad.addColorStop(0,'rgba(120,140,160,0.16)');
+      grad.addColorStop(1,'rgba(120,140,160,0)');
+      ctx.strokeStyle=grad;
+      ctx.beginPath();
+      ctx.moveTo(cx+x*sn,cy+camY*sn);
+      ctx.lineTo(cx+x*sf,cy+camY*sf);
+      ctx.stroke();
+    }
+
+    const R=Math.min(w,h)*0.34,dist=4.5;
+    const pts=V.map(v=>{
+      const [x,y,z]=rot(v,t*0.35,t*0.21);
+      const s=dist/(dist+z);
+      return [cx+x*R*s/P,cy+y*R*s/P,z,s];
+    });
+    ctx.lineWidth=1;
+    E.forEach(([i,j])=>{
+      const a=pts[i],b=pts[j];
+      const depth=(a[2]+b[2])/2/P;
+      const alpha=0.10+0.28*(depth*0.5+0.5);
+      ctx.strokeStyle='rgba(200,214,228,'+alpha.toFixed(3)+')';
+      ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();
+    });
+    pts.forEach(p=>{
+      const depth=p[2]/P;
+      ctx.fillStyle='rgba(191,27,44,'+(0.35+0.55*(depth*0.5+0.5)).toFixed(3)+')';
+      ctx.beginPath();ctx.arc(p[0],p[1],1.6+depth*0.8,0,6.283);ctx.fill();
+    });
+  }
+
+  function loop(){t+=0.01;draw();raf=requestAnimationFrame(loop);}
+  addEventListener('resize',resize,{passive:true});
+  resize();
+  if(!reduce)loop();
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)cancelAnimationFrame(raf);else if(!reduce)loop();
+  });
+})();
+</script>
+</body>
+</html>
