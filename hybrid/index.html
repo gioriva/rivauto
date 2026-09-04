@@ -3,8 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ibrido Toyota: perché non ha marce</title>
+<title>Come funziona l'ibrido Toyota</title>
 <meta name="description" content="Come funziona il rotismo epicicloidale dell'ibrido Toyota: muovi i comandi e guarda perché non servono le marce e come l'auto va con il motore spento.">
+<link rel="canonical" href="https://www.rivauto.ai/hybrid/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Come funziona l'ibrido Toyota">
+<meta property="og:description" content="Un solo ingranaggio, nessuna marcia. Muovi i comandi e guardalo girare con i numeri veri.">
+<meta property="og:url" content="https://www.rivauto.ai/hybrid/">
+<meta property="og:image" content="https://www.rivauto.ai/hybrid/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314283C'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23FF4D5E' stroke-width='8'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%23FFC53D'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%2314283C'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="256x256" href="/hybrid/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/hybrid/apple-touch-icon.png">
 <meta name="theme-color" content="#14283C">
 <!-- Font: se manca la rete, la pagina usa il carattere di sistema. Riga rimovibile. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,11 +48,6 @@ header{position:absolute;top:0;left:0;right:0;z-index:10;padding:18px 0}
 .marchio .nome{line-height:1.05}
 .marchio .nome b{display:block;font-weight:800;font-size:17px;letter-spacing:.01em}
 .marchio .nome span{font-weight:500;font-size:12.5px;opacity:.85;letter-spacing:.14em;text-transform:uppercase}
-.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:7px 14px;border-radius:99px;backdrop-filter:blur(6px);cursor:pointer}
-.badge .punto{width:8px;height:8px;border-radius:50%;background:#5BE38B;animation:pulsa 2s ease-in-out infinite}
-@keyframes pulsa{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
-.badge[aria-pressed=true]{background:#fff;color:var(--inchiostro);border-color:#fff}
-.badge[aria-pressed=true] .punto{background:var(--toyota);animation:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;color:#fff;padding:96px 0 0;border-radius:0 0 36px 36px;overflow:hidden;transition:background 2s ease;
@@ -106,8 +113,8 @@ header{position:absolute;top:0;left:0;right:0;z-index:10;padding:18px 0}
 }
 
 /* ---------- esperto ---------- */
-.esperto{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
-.esperto[hidden]{display:none}
+.dett-esperto{margin-top:22px}
+.esperto{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:20px}
 .scheda{position:relative;overflow:hidden;border-radius:var(--raggio);padding:22px 20px 20px;color:#fff;background:linear-gradient(150deg,var(--a) 0%,var(--b) 100%);box-shadow:0 16px 40px -24px rgba(12,30,53,.85)}
 .scheda.c1{--a:#14283C;--b:#2E4A66}.scheda.c2{--a:#1B3550;--b:#3A5F82}.scheda.c3{--a:#244266;--b:#4A7398}.scheda.c4{--a:#2E4A66;--b:#5A85AE}
 .scheda::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 70%);pointer-events:none}
@@ -141,7 +148,7 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
 .piede{font-size:13px;color:var(--inchiostro-2);font-weight:500;line-height:1.5;display:grid;gap:8px}
 .piede a{font-weight:700;text-decoration:none;color:var(--inchiostro)}
 
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -156,13 +163,12 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
       </svg>
       <span class="nome"><b>Ibrido Toyota</b><span>Rivauto</span></span>
     </a>
-    <button class="badge" id="expBtn" aria-pressed="false" aria-controls="esperto"><span class="punto"></span>Numeri da esperto</button>
   </div>
 </header>
 
 <div class="hero" id="hero">
   <div class="contenitore hero-int">
-    <h1>Perché l'ibrido Toyota non ha marce</h1>
+    <h1>Come funziona l'ibrido Toyota</h1>
     <p class="sotto">Un solo ingranaggio unisce motore a benzina, due motori elettrici e ruote. Qui lo vedi girare con i numeri veri.</p>
     <div class="scena">
       <svg id="schema" viewBox="0 0 420 480" role="img" aria-label="Sezione frontale del rotismo con i flussi di energia tra motore a benzina, MG1, MG2, batteria e ruote">
@@ -303,13 +309,16 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
       </div>
     </div>
 
-    <div class="esperto" id="esperto" hidden>
+    <details class="dett-esperto" id="dettEsperto">
+      <summary>I numeri da esperto: giri, coppie e potenze</summary>
+    <div class="esperto" id="esperto">
       <div class="scheda c1"><h3>Motore a benzina, portatreno</h3><div class="cifra"><span id="x-c-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia</span><span><span id="x-c-nm">0</span> Nm</span></div><div class="riga"><span>potenza</span><span><span id="x-c-kw">0</span> kW</span></div></div>
       <div class="scheda c2"><h3>Solare, MG1</h3><div class="cifra"><span id="x-s-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia</span><span><span id="x-s-nm">0</span> Nm</span></div><div class="riga"><span>potenza</span><span><span id="x-s-kw">0</span> kW</span></div></div>
       <div class="scheda c3"><h3>Corona, MG2 e ruote</h3><div class="cifra"><span id="x-r-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia totale</span><span><span id="x-r-nm">0</span> Nm</span></div><div class="riga"><span>alle ruote</span><span><span id="x-r-kw">0</span> kW</span></div><div class="riga"><span>di cui MG2</span><span><span id="x-m2-kw">0</span> kW</span></div></div>
       <div class="scheda c4"><h3>Batteria e satelliti</h3><div class="cifra"><span id="x-b-kw">0</span><small>kW</small></div><div class="riga"><span>satelliti su sé stessi</span><span><span id="x-p-rpm">0</span> giri</span></div><div class="riga"><span>ruote</span><span><span id="x-w-rpm">0</span> giri</span></div></div>
       <p class="nota" style="grid-column:1/-1">Potenza positiva = fornita al rotismo (motore che spinge, batteria che si scarica). Negativa = assorbita (generatore, batteria che si carica). Coppia del termico: 72,2% alla corona, 27,8% al solare.</p>
     </div>
+    </details>
 
     <div class="perche">
       <details>
@@ -361,9 +370,9 @@ const KMH_PER_RING_RPM = 3.6*Math.PI*DIAM/60/FINAL;
 const ENG_PMAX=72, MG2_PMAX=53, MG2_TMAX=400, MG1_RPM_MAX=10000; // MG2: coppia riferita alla corona
 const SYS_PMAX=100, REGEN_PMAX=30, ENG_FRIC=25, ENG_J=0.2, BATT_KWH=1.3;
 const EV_VMAX=70;                      // sopra, il termico gira comunque
-const VIS_SCALE=1/60;                  // rallentamento visivo delle rotazioni
-
-const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+// con "riduci movimento" attivo gli ingranaggi girano a un quarto della velocità e i flussi restano fermi
+const VIS_SCALE = reduced ? 1/240 : 1/60;   // rallentamento visivo delle rotazioni
 
 /* ---------- stato ---------- */
 const S={ vSet:0, v:0, pedal:0, soc:60, rev:false, engRpm:0, hold:0, thS:0, thC:0, thR:0, thP:0 };
@@ -439,10 +448,8 @@ function step(dt){
 
   out={wr,ws,wc,wpRel,Tc,Ts,Tr,Tmg2,Peng,Pmg1,Pmg2,Pwheel,PringEng,Pbatt,firing,cranking,dragged,wantFire:PengT>0.5};
 
-  if(!reduced){
-    S.thS += ws*VIS_SCALE*6*dt; S.thC += wc*VIS_SCALE*6*dt;
-    S.thR += wr*VIS_SCALE*6*dt; S.thP += wpRel*VIS_SCALE*6*dt;
-  }
+  S.thS += ws*VIS_SCALE*6*dt; S.thC += wc*VIS_SCALE*6*dt;
+  S.thR += wr*VIS_SCALE*6*dt; S.thP += wpRel*VIS_SCALE*6*dt;
 }
 
 /* ---------- disegno ingranaggi ---------- */
@@ -495,7 +502,7 @@ const el={ vel:$("vel"), ped:$("ped"), soc:$("soc"), rev:$("rev"), hero:$("hero"
   lEng:$("l-eng"), lMg1:$("l-mg1"), lMg2:$("l-mg2"), lWhl:$("l-whl"), lEmg1:$("l-emg1"), lEmg2:$("l-emg2"),
   tBatt:$("t-batt"), tMg1r:$("t-mg1r"), tEngr:$("t-engr"), tMg2p:$("t-mg2p"), tWhl:$("t-whl"),
   kEng:$("k-eng"), kEngS:$("k-eng-s"), kMg1:$("k-mg1"), kMg1S:$("k-mg1-s"), kRing:$("k-ring"), kRingS:$("k-ring-s"), kBatt:$("k-batt"), kBattS:$("k-batt-s"),
-  status:$("statusText"), expPanel:$("esperto"), expBtn:$("expBtn") };
+  status:$("statusText"), expDet:$("dettEsperto") };
 const X={};
 ["c-rpm","c-nm","c-kw","s-rpm","s-nm","s-kw","r-rpm","r-nm","r-kw","m2-kw","b-kw","p-rpm","w-rpm"].forEach(k=>X[k]=$("x-"+k));
 
@@ -563,7 +570,7 @@ function render(dt){
   el.socOut.textContent=fmt(S.soc)+"%";
   if(document.activeElement!==el.soc) el.soc.value=Math.round(S.soc);
   el.status.textContent=statusText();
-  if(!el.expPanel.hidden) renderExpert();
+  if(el.expDet.open) renderExpert();
 }
 
 function statusText(){
@@ -611,7 +618,7 @@ const SCEN=[
 ];
 const scenBox=$("scen"), scenText=$("scenText");
 const scenBtns=[];
-function applyScenario(i){
+function applyScenario(i,fromClick){
   const sc=SCEN[i];
   S.vSet=sc.v; S.pedal=sc.p; S.soc=sc.s; S.rev=sc.r;
   if(sc.restart){ S.engRpm=0; S.hold=0.9; }
@@ -619,12 +626,12 @@ function applyScenario(i){
   syncOutputs();
   scenBtns.forEach((b,k)=>b.setAttribute("aria-pressed",k===i?"true":"false"));
   scenText.innerHTML="<b>"+sc.n+".</b> "+sc.t;
-  if(scenBtns[i].scrollIntoView && !reduced) scenBtns[i].scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});
+  if(fromClick){ const b=scenBtns[i]; scenBox.scrollTo({left:b.offsetLeft-scenBox.offsetLeft-12, behavior: reduced?"auto":"smooth"}); }
 }
 SCEN.forEach((sc,i)=>{
   const b=document.createElement("button");
   b.type="button"; b.className="tab"; b.textContent=sc.n; b.setAttribute("aria-pressed","false");
-  b.addEventListener("click",()=>applyScenario(i));
+  b.addEventListener("click",()=>applyScenario(i,true));
   scenBox.appendChild(b); scenBtns.push(b);
 });
 function clearScenario(){ scenBtns.forEach(b=>b.setAttribute("aria-pressed","false")); }
@@ -639,12 +646,7 @@ el.vel.addEventListener("input",()=>{S.vSet=+el.vel.value; syncOutputs(); clearS
 el.ped.addEventListener("input",()=>{S.pedal=+el.ped.value; syncOutputs(); clearScenario();});
 el.soc.addEventListener("input",()=>{S.soc=+el.soc.value; syncOutputs(); clearScenario();});
 el.rev.addEventListener("change",()=>{S.rev=el.rev.checked; clearScenario();});
-el.expBtn.addEventListener("click",()=>{
-  const on=el.expBtn.getAttribute("aria-pressed")!=="true";
-  el.expBtn.setAttribute("aria-pressed",on?"true":"false");
-  el.expPanel.hidden=!on;
-  if(on){ renderExpert(); if(!reduced) el.expPanel.scrollIntoView({block:"nearest",behavior:"smooth"}); }
-});
+el.expDet.addEventListener("toggle",()=>{ if(el.expDet.open) renderExpert(); });
 
 /* ---------- ciclo ---------- */
 let last=performance.now();
