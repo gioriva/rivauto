@@ -40,92 +40,106 @@ button{font-family:inherit}
 .num{font-variant-numeric:tabular-nums}
 :focus-visible{outline:3px solid var(--ambra);outline-offset:2px;border-radius:6px}
 
-/* ---------- testata ---------- */
-header{position:absolute;top:0;left:0;right:0;z-index:10;padding:18px 0}
-.testata{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.marchio{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none}
-.marchio svg{width:38px;height:38px;flex:none}
-.marchio .nome{line-height:1.05}
-.marchio .nome b{display:block;font-weight:800;font-size:17px;letter-spacing:.01em}
-.marchio .nome span{font-weight:500;font-size:12.5px;opacity:.85;letter-spacing:.14em;text-transform:uppercase}
-
 /* ---------- hero ---------- */
-.hero{position:relative;color:#fff;padding:96px 0 0;border-radius:0 0 36px 36px;overflow:hidden;transition:background 2s ease;
+.hero{position:relative;color:#fff;padding:36px 0 0;border-radius:0 0 36px 36px;overflow:hidden;transition:background 2s ease;
   background:linear-gradient(180deg,#0E3A4C 0%,#1C7A8A 55%,#6BC7CB 100%)}
 .hero.termico{background:linear-gradient(180deg,#1A2A4D 0%,#2C79C8 55%,#A8D4F5 100%)}
 .hero.rigenera{background:linear-gradient(180deg,#0A3125 0%,#1E6E52 55%,#7DD3A8 100%)}
 .hero.ricarica{background:linear-gradient(180deg,#39557E 0%,#B76A8F 55%,#F6B37C 100%)}
-.hero-int{position:relative;z-index:2;text-align:center;padding-bottom:120px}
-.hero-int h1{font-weight:850;font-stretch:112%;font-size:clamp(28px,5vw,50px);letter-spacing:-.015em;line-height:1.06;max-width:640px;margin:0 auto;text-wrap:balance}
-.hero-int .sotto{margin-top:12px;font-size:clamp(15px,2vw,18px);font-weight:500;opacity:.92;max-width:560px;margin-left:auto;margin-right:auto}
-.scena{max-width:520px;margin:18px auto 0}
+.hero-int{position:relative;z-index:2;padding-bottom:104px;display:grid;gap:18px 40px;grid-template-columns:1fr;grid-template-areas:"testo" "scena" "trag"}
+@media(min-width:900px){.hero-int{grid-template-columns:1fr 1fr;grid-template-areas:"testo scena" "trag scena";align-items:start;padding-top:24px;padding-bottom:110px;gap:14px 48px}}
+.h-testo{grid-area:testo}
+.h-scena{grid-area:scena}
+.h-trag{grid-area:trag}
+.h-testo h1{font-weight:850;font-stretch:112%;font-size:clamp(30px,4.2vw,52px);letter-spacing:-.015em;line-height:1.04;text-wrap:balance}
+.h-testo .sotto{margin-top:12px;font-size:clamp(15px,1.6vw,19px);font-weight:500;opacity:.92;max-width:44ch}
+.scena{max-width:500px;margin:0 auto}
+@media(min-width:900px){.scena{max-width:none;margin:0}}
 .scena svg{display:block;width:100%;height:auto}
 .legenda-hero{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;font-weight:600;opacity:.9;margin-top:6px}
 .legenda-hero i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
 .legenda-hero .fl::before{content:"";display:inline-block;width:20px;border-top:3px solid;vertical-align:middle;margin-right:5px}
 .orizzonte{position:absolute;bottom:-1px;left:0;right:0;z-index:2;display:block;width:100%}
 
-/* ---------- contatori sovrapposti ---------- */
-.contatori{position:relative;z-index:5;margin-top:-64px}
-.griglia-cont{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.cont{background:var(--carta);border:1px solid var(--linea);border-radius:var(--raggio);padding:20px 18px 16px;box-shadow:0 14px 40px -18px rgba(20,40,60,.25);position:relative;overflow:hidden}
-.cont::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--tinta)}
-.cont .n{font-weight:850;font-stretch:110%;font-size:clamp(24px,3.2vw,36px);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
-.cont .n small{font-size:.45em;font-weight:700;color:var(--inchiostro-2)}
-.cont .d{margin-top:7px;font-size:13.5px;font-weight:700}
-.cont .s{font-size:12.5px;font-weight:500;color:var(--inchiostro-2);margin-top:2px;min-height:1.3em}
-@media(max-width:820px){.griglia-cont{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:400px){.cont{padding:14px 14px 12px}}
+/* ---------- stato in parole ---------- */
+.stati{position:relative;z-index:5;margin-top:-60px}
+.griglia-stati{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stato-c{background:var(--carta);border:1px solid var(--linea);border-radius:var(--raggio);padding:18px 18px 16px;box-shadow:0 14px 40px -18px rgba(20,40,60,.25);position:relative;overflow:hidden}
+.stato-c::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--tinta)}
+.stato-c .e{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--inchiostro-2)}
+.stato-c .v{margin-top:6px;font-weight:850;font-stretch:110%;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:8px}
+.stato-c .v small{font-size:.5em;font-weight:700;color:var(--inchiostro-2)}
+.stato-c .s{font-size:13px;font-weight:600;color:var(--inchiostro-2);margin-top:5px;min-height:1.3em}
+.spia{width:12px;height:12px;border-radius:50%;background:#B9C4CF;flex:none;transition:background .4s}
+.spia.on{background:var(--blu)} .spia.avvio{background:var(--ambra)} .spia.verde{background:#43AE84}
+.barra{height:8px;border-radius:4px;background:#E3EAF1;margin-top:8px;overflow:hidden}
+.barra i{display:block;height:100%;background:#43AE84;transition:width .4s}
+@media(max-width:820px){.griglia-stati{grid-template-columns:repeat(2,1fr)}.stato-c{padding:14px}}
 
-/* ---------- scenari ---------- */
-.scenari{margin-top:34px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;scroll-snap-align:start;font-weight:700;font-size:14px;padding:9px 16px;border-radius:99px;cursor:pointer;border:1.5px solid var(--linea);background:var(--carta);color:var(--inchiostro-2);white-space:nowrap;transition:all .2s ease}
-.tab[aria-pressed=true]{color:#fff;background:var(--inchiostro);border-color:var(--inchiostro)}
-.scen-testo{margin-top:6px;font-size:15px;font-weight:500;color:var(--inchiostro-2);max-width:80ch;min-height:2.7em}
-.scen-testo b{color:var(--inchiostro);font-weight:800}
+/* ---------- tragitto, dentro il cielo ---------- */
+.trag-testa{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.trag-testa h2{font-weight:800;font-stretch:108%;font-size:15px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.trag-testa .modo{font-size:13px;font-weight:600;opacity:.85}
+.trag-testa .modo i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5BE38B;margin-right:6px;vertical-align:1px}
+.trag-testa .modo.manuale i{background:var(--ambra)}
+.capitoli{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin-top:6px;padding-top:2px}
+.capitoli::before{content:"";position:absolute;left:10%;right:10%;top:20px;height:4px;border-radius:2px;background:rgba(255,255,255,.22)}
+.capitoli .linea{position:absolute;left:10%;top:20px;height:4px;border-radius:2px;background:var(--ambra);width:0}
+.passo{position:relative;background:none;border:0;padding:4px 2px 0;cursor:pointer;display:grid;justify-items:center;gap:8px;color:rgba(255,255,255,.8);font-weight:700;font-size:13px;line-height:1.15;text-align:center}
+.passo .pallino{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.12);border:3px solid rgba(255,255,255,.45);display:grid;place-items:center;font-size:14px;font-weight:850;color:#fff;transition:all .25s;backdrop-filter:blur(4px)}
+.passo[aria-pressed=true] .pallino{background:#fff;border-color:#fff;color:var(--inchiostro);transform:scale(1.12)}
+.passo[aria-pressed=true]{color:#fff}
+.passo.fatto .pallino{background:var(--ambra);border-color:var(--ambra);color:var(--inchiostro)}
+.passo:focus-visible{outline:none}
+.passo:focus-visible .pallino{outline:3px solid var(--ambra);outline-offset:2px}
+@media(max-width:480px){.passo{font-size:11.5px;gap:6px}.passo .pallino{width:30px;height:30px;font-size:13px;border-width:2.5px}.capitoli::before,.capitoli .linea{top:17px;height:3px}}
+.cap-card{margin-top:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);border-radius:var(--raggio);padding:16px 18px;backdrop-filter:blur(8px)}
+.cap-testo{font-size:clamp(17px,1.7vw,20px);font-weight:600;line-height:1.35;max-width:44ch;min-height:2.7em}
+.pedale{margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;border-top:1px solid rgba(255,255,255,.22);padding-top:12px}
+.pedale .t{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.pedale output{font-weight:850;font-stretch:110%;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right}
+.pedale input[type=range]{grid-column:1/-1;width:100%;margin:2px 0 0;accent-color:var(--ambra);height:40px}
+.pedale .sub{grid-column:1/-1;display:flex;justify-content:space-between;font-size:13px;font-weight:700;opacity:.8}
+.pedale .riga-b{grid-column:1/-1;display:flex;justify-content:flex-end;min-height:0}
+.bott{font-weight:800;font-size:13.5px;padding:8px 14px;border-radius:99px;border:0;background:#fff;color:var(--inchiostro);cursor:pointer}
+.bott[hidden]{display:none}
+@media(max-width:820px){.cap-testo{font-size:15.5px;min-height:0}}
 
-/* ---------- pannelli ---------- */
-.due{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:22px;align-items:start}
-@media(max-width:820px){.due{grid-template-columns:1fr}}
-.pannello{background:var(--carta);border:1px solid var(--linea);border-radius:var(--raggio);padding:20px;box-shadow:0 14px 40px -22px rgba(20,40,60,.2)}
-.pannello h2{font-weight:800;font-stretch:108%;font-size:20px;letter-spacing:-.01em}
-.pannello .sotto-sez{margin-top:4px;color:var(--inchiostro-2);font-size:14px;font-weight:500}
-.pannello svg{display:block;width:100%;height:auto;margin-top:10px}
-.stato{margin-top:12px;background:var(--inchiostro);color:#fff;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:500;line-height:1.4;min-height:4.4em}
-.stato b{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:3px}
+/* ---------- tre cose ---------- */
+.tre{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:820px){.tre{grid-template-columns:1fr}}
+.cosa{border-radius:var(--raggio);padding:22px 20px;color:#fff;background:linear-gradient(150deg,var(--a) 0%,var(--b) 100%);box-shadow:0 16px 40px -24px rgba(12,30,53,.85);position:relative;overflow:hidden}
+.cosa::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 70%);pointer-events:none}
+.cosa.a{--a:#0E3A4C;--b:#1C7A8A}.cosa.b{--a:#1A2A4D;--b:#2C79C8}.cosa.c{--a:#0A3125;--b:#1E6E52}
+.cosa .n{font-weight:900;font-stretch:112%;font-size:44px;line-height:1;letter-spacing:-.03em;opacity:.35}
+.cosa h2{font-weight:850;font-stretch:108%;font-size:20px;letter-spacing:-.01em;margin-top:8px;line-height:1.15}
+.cosa p{margin-top:8px;font-size:15px;font-weight:500;opacity:.92;line-height:1.45}
 
-/* comandi */
-.comandi{display:grid;gap:14px;margin-top:14px}
+/* ---------- dettagli per chi vuole ---------- */
+.dettagli{margin-top:30px}
+.dettagli>summary{font-size:18px}
+.dett-int{display:grid;gap:16px;padding-bottom:20px}
+.comandi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:600px){.comandi{grid-template-columns:1fr}}
 .ctl label{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;font-weight:700;color:var(--inchiostro-2)}
-.ctl output{font-weight:850;font-stretch:110%;font-size:26px;letter-spacing:-.02em;color:var(--inchiostro)}
+.ctl output{font-weight:850;font-stretch:110%;font-size:22px;letter-spacing:-.02em;color:var(--inchiostro)}
 .ctl input[type=range]{width:100%;margin:6px 0 0;accent-color:var(--toyota);height:30px}
 .ctl .sub{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--inchiostro-2);font-weight:500;min-height:20px}
 .ctl .sub input{width:16px;height:16px;accent-color:var(--toyota);margin:0 5px 0 0;vertical-align:-3px}
 .ctl .sub label{font-weight:700;color:var(--inchiostro)}
-@media(max-width:820px){
-  .pannello.comandi-p{position:sticky;bottom:10px;z-index:6;padding:12px 14px;box-shadow:0 10px 30px -10px rgba(20,40,60,.45)}
-  .pannello.comandi-p h2,.pannello.comandi-p .sotto-sez{display:none}
-  .comandi{grid-template-columns:repeat(3,1fr);gap:10px;margin-top:0}
-  .ctl output{font-size:18px}
-  .ctl .sub .t{display:none}
-}
-
-/* ---------- esperto ---------- */
-.dett-esperto{margin-top:22px}
-.esperto{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-bottom:20px}
-.scheda{position:relative;overflow:hidden;border-radius:var(--raggio);padding:22px 20px 20px;color:#fff;background:linear-gradient(150deg,var(--a) 0%,var(--b) 100%);box-shadow:0 16px 40px -24px rgba(12,30,53,.85)}
-.scheda.c1{--a:#14283C;--b:#2E4A66}.scheda.c2{--a:#1B3550;--b:#3A5F82}.scheda.c3{--a:#244266;--b:#4A7398}.scheda.c4{--a:#2E4A66;--b:#5A85AE}
-.scheda::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 70%);pointer-events:none}
-.scheda h3{font-size:14px;font-weight:700;letter-spacing:.02em}
-.scheda .cifra{font-weight:900;font-stretch:112%;font-size:clamp(28px,3.2vw,36px);line-height:1.05;letter-spacing:-.025em;margin-top:10px;font-variant-numeric:tabular-nums}
-.scheda .cifra small{font-size:.42em;font-weight:700;opacity:.85;margin-left:4px}
-.scheda .riga{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;opacity:.88;margin-top:6px;font-variant-numeric:tabular-nums}
-.scheda .riga+.riga{margin-top:3px}
-.nota{margin-top:12px;font-size:13px;color:var(--inchiostro-2);font-weight:500;max-width:80ch}
+.sotto-pannello{background:var(--cielo);border-radius:14px;padding:16px}
+.sotto-pannello h3{font-weight:800;font-size:16px;letter-spacing:-.01em}
+.sotto-pannello .sotto-sez{margin-top:4px;color:var(--inchiostro-2);font-size:13.5px;font-weight:500}
+.sotto-pannello svg{display:block;width:100%;height:auto;margin-top:8px;max-width:520px}
+.stato{margin-top:12px;background:var(--inchiostro);color:#fff;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:500;line-height:1.4}
+.stato b{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-bottom:3px}
+.esperto{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 @media(max-width:900px){.esperto{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.esperto{grid-template-columns:1fr}}
+.testi{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.testi{grid-template-columns:1fr}}
+.testi h3{font-weight:800;font-size:16px;margin-bottom:8px}
+.testi p{font-size:15px;font-weight:500;color:#2B3F55;line-height:1.5;margin-bottom:.7em;max-width:62ch}
 
 /* ---------- spiegazioni ---------- */
 .perche{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
@@ -153,25 +167,16 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
 </head>
 <body>
 
-<header>
-  <div class="contenitore testata">
-    <a class="marchio" href="#" aria-label="Ibrido Toyota, Rivauto">
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="26" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="7 4.4"/>
-        <circle cx="32" cy="32" r="13" fill="#FFC53D"/>
-        <circle cx="32" cy="32" r="4" fill="#14283C"/>
-      </svg>
-      <span class="nome"><b>Ibrido Toyota</b><span>Rivauto</span></span>
-    </a>
-  </div>
-</header>
 
 <div class="hero" id="hero">
   <div class="contenitore hero-int">
-    <h1>Come funziona l'ibrido Toyota</h1>
-    <p class="sotto">Un solo ingranaggio unisce motore a benzina, due motori elettrici e ruote. Qui lo vedi girare con i numeri veri.</p>
+    <div class="h-testo">
+      <h1>Come funziona l'ibrido Toyota</h1>
+      <p class="sotto">Un motore a benzina, un motore elettrico e un ingranaggio che li unisce.</p>
+    </div>
+    <div class="h-scena">
     <div class="scena">
-      <svg id="schema" viewBox="0 0 420 480" role="img" aria-label="Sezione frontale del rotismo con i flussi di energia tra motore a benzina, MG1, MG2, batteria e ruote">
+      <svg id="schema" viewBox="0 0 420 480" role="img" aria-label="Il rotismo dell'ibrido con i flussi di energia tra motore a benzina, generatore, motore elettrico, batteria e ruote">
         <defs>
           <radialGradient id="alone"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
         </defs>
@@ -188,24 +193,24 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
           <path id="f-eng2" d="M355,116 L240,200" stroke="var(--mecc)" stroke-width="3" stroke-dasharray="7 7"/>
           <path id="f-mg1" d="M60,116 L185,255" stroke="rgba(0,0,0,.35)" stroke-width="10"/>
           <path id="f-mg12" d="M60,116 L185,255" stroke="var(--mecc)" stroke-width="3" stroke-dasharray="7 7"/>
-          <path id="f-mg2" d="M320,255 L305,255" stroke="var(--mecc)" stroke-width="3" stroke-dasharray="7 7"/>
+          <path id="f-mg2" d="M314,255 L305,255" stroke="var(--mecc)" stroke-width="3" stroke-dasharray="7 7"/>
           <path id="f-whl" d="M270,340 L330,420" stroke="var(--mecc)" stroke-width="3" stroke-dasharray="7 7"/>
           <path id="e-mg1" d="M60,80 L60,34 L130,34" stroke="var(--elet)" stroke-width="3" stroke-dasharray="7 7"/>
           <path id="e-mg2" d="M400,236 L400,34 L290,34" stroke="var(--elet)" stroke-width="3" stroke-dasharray="7 7"/>
         </g>
         <g font-size="13" font-weight="700" text-anchor="middle" fill="#fff">
           <rect x="130" y="12" width="160" height="44" rx="10" fill="rgba(255,255,255,.14)" stroke="var(--elet)" stroke-width="1.5"/>
-          <text x="210" y="30">Batteria e inverter</text>
+          <text x="210" y="30">Batteria</text>
           <text id="t-batt" class="num" x="210" y="48" font-size="14" fill="var(--elet)">0 kW</text>
           <rect x="10" y="80" width="100" height="36" rx="10" fill="rgba(255,255,255,.14)" stroke="var(--sole)" stroke-width="1.5"/>
-          <text x="60" y="97" fill="var(--sole)">MG1</text>
-          <text id="t-mg1r" class="num" x="60" y="111" font-size="12" opacity=".9">0 giri</text>
+          <text x="60" y="97" fill="var(--sole)">Generatore</text>
+          <text id="t-mg1r" class="num" x="60" y="111" font-size="12" opacity=".9">a vuoto</text>
           <rect x="300" y="80" width="110" height="36" rx="10" fill="rgba(255,255,255,.14)" stroke="var(--sat)" stroke-width="1.5"/>
           <text x="355" y="97" fill="var(--sat)">Motore benzina</text>
           <text id="t-engr" class="num" x="355" y="111" font-size="12" opacity=".9">spento</text>
-          <rect x="320" y="236" width="90" height="38" rx="10" fill="rgba(255,255,255,.14)" stroke="var(--corona)" stroke-width="1.5"/>
-          <text x="365" y="253" fill="var(--corona)">MG2</text>
-          <text id="t-mg2p" class="num" x="365" y="268" font-size="12" opacity=".9">0 kW</text>
+          <rect x="314" y="236" width="96" height="38" rx="10" fill="rgba(255,255,255,.14)" stroke="var(--corona)" stroke-width="1.5"/>
+          <text x="362" y="253" font-size="12" fill="var(--corona)">Motore elettrico</text>
+          <text id="t-mg2p" class="num" x="362" y="268" font-size="12" opacity=".9">fermo</text>
           <rect x="250" y="420" width="160" height="44" rx="10" fill="rgba(255,255,255,.14)" stroke="#fff" stroke-width="1.5"/>
           <text x="330" y="438">Ruote</text>
           <text id="t-whl" class="num" x="330" y="456" font-size="14">0 km/h</text>
@@ -213,18 +218,32 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
         <g font-size="12" class="num" font-weight="700">
           <text id="l-eng" x="316" y="170" fill="var(--mecc)" text-anchor="start"></text>
           <text id="l-mg1" x="112" y="200" fill="var(--mecc)" text-anchor="start"></text>
-          <text id="l-mg2" x="365" y="292" fill="var(--mecc)" text-anchor="middle"></text>
+          <text id="l-mg2" x="362" y="292" fill="var(--mecc)" text-anchor="middle"></text>
           <text id="l-whl" x="286" y="410" fill="var(--mecc)" text-anchor="end"></text>
           <text id="l-emg1" x="95" y="28" fill="var(--elet)" text-anchor="middle"></text>
           <text id="l-emg2" x="345" y="28" fill="var(--elet)" text-anchor="middle"></text>
         </g>
       </svg>
       <div class="legenda-hero">
-        <span><i style="background:var(--sole)"></i>solare, MG1</span>
-        <span><i style="background:var(--sat)"></i>satelliti e portatreno, benzina</span>
-        <span><i style="background:var(--corona)"></i>corona, MG2 e ruote</span>
-        <span class="fl" style="color:var(--mecc)">meccanica</span>
-        <span class="fl" style="color:var(--elet)">elettrica</span>
+        <span><i style="background:var(--sole)"></i>generatore</span>
+        <span><i style="background:var(--sat)"></i>motore a benzina</span>
+        <span><i style="background:var(--corona)"></i>motore elettrico e ruote</span>
+        <span class="fl" style="color:var(--mecc)">forza</span>
+        <span class="fl" style="color:var(--elet)">corrente</span>
+      </div>
+    </div>
+    </div>
+    <div class="h-trag" aria-label="Un tragitto in città">
+      <div class="capitoli" id="capitoli" role="group" aria-label="Momenti del tragitto"><span class="linea" id="capLinea"></span></div>
+      <div class="cap-card">
+        <p class="cap-testo" id="capTesto" aria-live="polite"></p>
+        <div class="pedale">
+          <div class="t">Prova tu</div>
+          <output id="pedOut" class="num" for="ped">0%</output>
+          <input type="range" id="ped" min="-100" max="100" step="1" value="0" aria-label="Pedale: a sinistra il freno, a destra l'acceleratore">
+          <div class="sub"><span>◀ freno</span><span>acceleratore ▶</span></div>
+          <div class="riga-b"><button class="bott" id="riprendi" type="button" hidden>Riprendi il tragitto</button></div>
+        </div>
       </div>
     </div>
   </div>
@@ -234,90 +253,90 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
 </div>
 
 <main>
-  <div class="contenitore contatori">
-    <div class="griglia-cont">
-      <div class="cont" style="--tinta:var(--blu)"><div class="n"><span id="k-eng">0</span> <small>giri</small></div><div class="d">Motore a benzina</div><div class="s" id="k-eng-s">spento</div></div>
-      <div class="cont" style="--tinta:var(--ambra)"><div class="n"><span id="k-mg1">0</span> <small>giri</small></div><div class="d">MG1, sul solare</div><div class="s" id="k-mg1-s"></div></div>
-      <div class="cont" style="--tinta:var(--toyota)"><div class="n"><span id="k-ring">0</span> <small>giri</small></div><div class="d">Corona, verso le ruote</div><div class="s" id="k-ring-s"></div></div>
-      <div class="cont" style="--tinta:#43AE84"><div class="n"><span id="k-batt">0</span> <small>kW</small></div><div class="d">Batteria</div><div class="s" id="k-batt-s"></div></div>
+  <div class="contenitore stati">
+    <div class="griglia-stati" aria-live="off">
+      <div class="stato-c" style="--tinta:var(--inchiostro)"><div class="e">Velocità</div><div class="v"><span id="s-vel">0</span><small>km/h</small></div><div class="s" id="s-vel-s">ferma</div></div>
+      <div class="stato-c" style="--tinta:var(--blu)"><div class="e">Motore a benzina</div><div class="v"><i class="spia" id="spia-eng"></i><span id="s-eng">Spento</span></div><div class="s" id="s-eng-s">non consuma</div></div>
+      <div class="stato-c" style="--tinta:var(--toyota)"><div class="e">Motore elettrico</div><div class="v"><i class="spia" id="spia-mot"></i><span id="s-mot">Fermo</span></div><div class="s" id="s-mot-s"></div></div>
+      <div class="stato-c" style="--tinta:#43AE84"><div class="e">Batteria</div><div class="v"><span id="s-batt">60</span><small>%</small></div><div class="barra"><i id="s-batt-b" style="width:60%"></i></div><div class="s" id="s-batt-s">ferma</div></div>
     </div>
   </div>
 
-  <section class="contenitore scenari">
-    <div class="tabs" id="scen" role="group" aria-label="Situazioni di guida"></div>
-    <p class="scen-testo" id="scenText" aria-live="polite"></p>
+  <section class="contenitore" aria-label="Tre cose da ricordare" style="margin-top:4px">
+    <div class="tre">
+      <div class="cosa a"><div class="n">1</div><h2>Parte e va in elettrico da sola</h2><p>Non si attacca alla presa. La batteria si ricarica quando freni e, se serve, con il motore a benzina.</p></div>
+      <div class="cosa b"><div class="n">2</div><h2>La benzina entra solo quando serve</h2><p>E quando entra non la senti: niente frizione, niente motorino. Il motore si accende e si spegne decine di volte in un tragitto.</p></div>
+      <div class="cosa c"><div class="n">3</div><h2>Non ha marce</h2><p>Un solo ingranaggio fa il lavoro del cambio. Il rapporto cambia in continuazione, senza scatti.</p></div>
+    </div>
   </section>
 
   <section class="contenitore">
-    <div class="due">
-      <div class="pannello">
-        <h2>Il nomogramma</h2>
-        <p class="sotto-sez">Tre assi, tre alberi. I tre punti stanno sempre su una retta: è tutta la regola del rotismo. Il portatreno è a 78/108 della distanza tra solare e corona.</p>
-        <svg id="nomo" viewBox="0 0 380 330" role="img" aria-label="Nomogramma delle velocità: solare, portatreno e corona allineati su una retta">
-          <line x1="30" y1="160" x2="350" y2="160" stroke="#C9D7E3" stroke-dasharray="3 4"/>
-          <g stroke="#9DB0C2" stroke-width="1.5">
-            <line x1="50" y1="30" x2="50" y2="290"/><line x1="252.2" y1="30" x2="252.2" y2="290"/><line x1="330" y1="30" x2="330" y2="290"/>
-          </g>
-          <g stroke="var(--toyota)" stroke-width="1.5" stroke-dasharray="4 3">
-            <line x1="36" y1="60" x2="64" y2="60"/><line x1="36" y1="260" x2="64" y2="260"/>
-          </g>
-          <text x="70" y="64" font-size="10" font-weight="600" fill="var(--toyota)">limite MG1 ±10.000</text>
-          <g font-size="10" font-weight="600" fill="#7A8FA3">
-            <text x="14" y="164">0</text><text x="8" y="42">+12.000</text><text x="8" y="286">-12.000</text>
-          </g>
-          <line id="nLine" x1="50" y1="160" x2="330" y2="160" stroke="var(--inchiostro)" stroke-width="2.5" stroke-linecap="round"/>
-          <circle id="nS" cx="50" cy="160" r="8" fill="var(--ambra)" stroke="#fff" stroke-width="2"/>
-          <circle id="nC" cx="252.2" cy="160" r="8" fill="var(--blu)" stroke="#fff" stroke-width="2"/>
-          <circle id="nR" cx="330" cy="160" r="8" fill="var(--toyota)" stroke="#fff" stroke-width="2"/>
-          <g font-size="12" font-weight="800" text-anchor="middle">
-            <text x="50" y="20" fill="var(--ambra-scura)">Solare</text>
-            <text x="252.2" y="20" fill="var(--blu)">Portatreno</text>
-            <text x="330" y="20" fill="var(--toyota)">Corona</text>
-          </g>
-          <g font-size="10" font-weight="600" text-anchor="middle" fill="#7A8FA3">
-            <text x="50" y="304">MG1</text><text x="252.2" y="304">benzina</text><text x="330" y="304">MG2, ruote</text>
-          </g>
-          <g font-size="16" font-weight="850" text-anchor="middle" class="num">
-            <text id="nSt" x="50" y="323" fill="var(--ambra-scura)">0</text>
-            <text id="nCt" x="252.2" y="323" fill="var(--blu)">0</text>
-            <text id="nRt" x="330" y="323" fill="var(--toyota)">0</text>
-          </g>
-        </svg>
-        <div class="stato"><b>Cosa sta succedendo</b><span id="statusText">…</span></div>
-      </div>
-
-      <div class="pannello comandi-p">
-        <h2>Comandi</h2>
-        <p class="sotto-sez">Muovi i cursori: giri e potenze si ricalcolano in tempo reale.</p>
+    <details class="dettagli" id="dettagli">
+      <summary>Per chi vuole i dettagli: comandi, nomogramma e numeri</summary>
+      <div class="dett-int">
         <div class="comandi">
           <div class="ctl">
             <label for="vel"><span>Velocità</span><output id="velOut" class="num" for="vel">0 km/h</output></label>
-            <input type="range" id="vel" min="0" max="160" step="1" value="0" aria-label="Velocità del veicolo in chilometri orari, da 0 a 160">
-            <div class="sub"><span><input type="checkbox" id="rev" aria-label="Retromarcia"><label for="rev">retro</label></span><span class="t">0 – 160 km/h</span></div>
-          </div>
-          <div class="ctl">
-            <label for="ped"><span>Pedale</span><output id="pedOut" class="num" for="ped">0%</output></label>
-            <input type="range" id="ped" min="-100" max="100" step="1" value="0" aria-label="Richiesta di potenza: valori negativi frenata, valori positivi acceleratore">
-            <div class="sub"><span>freno</span><span>acceleratore</span></div>
+            <input type="range" id="vel" min="0" max="160" step="1" value="0" aria-label="Imposta la velocità del veicolo, da 0 a 160 chilometri orari">
+            <div class="sub"><span><input type="checkbox" id="rev" aria-label="Retromarcia"><label for="rev">retromarcia</label></span><span>imposta e guarda</span></div>
           </div>
           <div class="ctl">
             <label for="soc"><span>Batteria</span><output id="socOut" class="num" for="soc">60%</output></label>
             <input type="range" id="soc" min="0" max="100" step="1" value="60" aria-label="Stato di carica della batteria in percentuale">
-            <div class="sub"><span class="t">si carica e si scarica da sola mentre guardi</span></div>
+            <div class="sub"><span>si carica e si scarica da sola</span></div>
+          </div>
+          <div class="ctl">
+            <label for="vis"><span>Rotazione a schermo</span><output id="visOut" class="num" for="vis">1/60</output></label>
+            <input type="range" id="vis" min="1" max="4" step="1" value="2" aria-label="Rallentamento visivo delle rotazioni">
+            <div class="sub"><span>solo l'animazione, non i numeri</span></div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <details class="dett-esperto" id="dettEsperto">
-      <summary>I numeri da esperto: giri, coppie e potenze</summary>
-    <div class="esperto" id="esperto">
-      <div class="scheda c1"><h3>Motore a benzina, portatreno</h3><div class="cifra"><span id="x-c-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia</span><span><span id="x-c-nm">0</span> Nm</span></div><div class="riga"><span>potenza</span><span><span id="x-c-kw">0</span> kW</span></div></div>
-      <div class="scheda c2"><h3>Solare, MG1</h3><div class="cifra"><span id="x-s-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia</span><span><span id="x-s-nm">0</span> Nm</span></div><div class="riga"><span>potenza</span><span><span id="x-s-kw">0</span> kW</span></div></div>
-      <div class="scheda c3"><h3>Corona, MG2 e ruote</h3><div class="cifra"><span id="x-r-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia totale</span><span><span id="x-r-nm">0</span> Nm</span></div><div class="riga"><span>alle ruote</span><span><span id="x-r-kw">0</span> kW</span></div><div class="riga"><span>di cui MG2</span><span><span id="x-m2-kw">0</span> kW</span></div></div>
-      <div class="scheda c4"><h3>Batteria e satelliti</h3><div class="cifra"><span id="x-b-kw">0</span><small>kW</small></div><div class="riga"><span>satelliti su sé stessi</span><span><span id="x-p-rpm">0</span> giri</span></div><div class="riga"><span>ruote</span><span><span id="x-w-rpm">0</span> giri</span></div></div>
-      <p class="nota" style="grid-column:1/-1">Potenza positiva = fornita al rotismo (motore che spinge, batteria che si scarica). Negativa = assorbita (generatore, batteria che si carica). Coppia del termico: 72,2% alla corona, 27,8% al solare.</p>
-    </div>
+        <div class="sotto-pannello">
+          <h3>Il nomogramma</h3>
+          <p class="sotto-sez">Tre assi, tre alberi. I tre punti stanno sempre su una retta: è tutta la regola del rotismo. Il portatreno è a 78/108 della distanza tra solare e corona. Giri al minuto.</p>
+          <svg id="nomo" viewBox="0 0 380 330" role="img" aria-label="Nomogramma delle velocità: solare, portatreno e corona allineati su una retta">
+            <line x1="30" y1="160" x2="350" y2="160" stroke="#C9D7E3" stroke-dasharray="3 4"/>
+            <g stroke="#9DB0C2" stroke-width="1.5">
+              <line x1="50" y1="30" x2="50" y2="290"/><line x1="252.2" y1="30" x2="252.2" y2="290"/><line x1="330" y1="30" x2="330" y2="290"/>
+            </g>
+            <g stroke="var(--toyota)" stroke-width="1.5" stroke-dasharray="4 3">
+              <line x1="36" y1="60" x2="64" y2="60"/><line x1="36" y1="260" x2="64" y2="260"/>
+            </g>
+            <text x="70" y="64" font-size="10" font-weight="600" fill="var(--toyota)">limite MG1 ±10.000</text>
+            <g font-size="10" font-weight="600" fill="#7A8FA3">
+              <text x="14" y="164">0</text><text x="8" y="42">+12.000</text><text x="8" y="286">-12.000</text>
+            </g>
+            <line id="nLine" x1="50" y1="160" x2="330" y2="160" stroke="var(--inchiostro)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle id="nS" cx="50" cy="160" r="8" fill="var(--ambra)" stroke="#fff" stroke-width="2"/>
+            <circle id="nC" cx="252.2" cy="160" r="8" fill="var(--blu)" stroke="#fff" stroke-width="2"/>
+            <circle id="nR" cx="330" cy="160" r="8" fill="var(--toyota)" stroke="#fff" stroke-width="2"/>
+            <g font-size="12" font-weight="800" text-anchor="middle">
+              <text x="50" y="20" fill="var(--ambra-scura)">Solare</text>
+              <text x="252.2" y="20" fill="var(--blu)">Portatreno</text>
+              <text x="330" y="20" fill="var(--toyota)">Corona</text>
+            </g>
+            <g font-size="10" font-weight="600" text-anchor="middle" fill="#7A8FA3">
+              <text x="50" y="304">MG1, generatore</text><text x="252.2" y="304">benzina</text><text x="330" y="304">MG2, ruote</text>
+            </g>
+            <g font-size="16" font-weight="850" text-anchor="middle" class="num">
+              <text id="nSt" x="50" y="323" fill="var(--ambra-scura)">0</text>
+              <text id="nCt" x="252.2" y="323" fill="var(--blu)">0</text>
+              <text id="nRt" x="330" y="323" fill="var(--toyota)">0</text>
+            </g>
+          </svg>
+          <div class="stato"><b>Cosa sta succedendo</b><span id="statusText">…</span></div>
+        </div>
+
+        <div class="esperto" id="esperto">
+          <div class="scheda c1"><h3>Motore a benzina, portatreno</h3><div class="cifra"><span id="x-c-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia</span><span><span id="x-c-nm">0</span> Nm</span></div><div class="riga"><span>potenza</span><span><span id="x-c-kw">0</span> kW</span></div></div>
+          <div class="scheda c2"><h3>Solare, MG1</h3><div class="cifra"><span id="x-s-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia</span><span><span id="x-s-nm">0</span> Nm</span></div><div class="riga"><span>potenza</span><span><span id="x-s-kw">0</span> kW</span></div></div>
+          <div class="scheda c3"><h3>Corona, MG2 e ruote</h3><div class="cifra"><span id="x-r-rpm">0</span><small>giri</small></div><div class="riga"><span>coppia totale</span><span><span id="x-r-nm">0</span> Nm</span></div><div class="riga"><span>alle ruote</span><span><span id="x-r-kw">0</span> kW</span></div><div class="riga"><span>di cui MG2</span><span><span id="x-m2-kw">0</span> kW</span></div></div>
+          <div class="scheda c4"><h3>Batteria e satelliti</h3><div class="cifra"><span id="x-b-kw">0</span><small>kW</small></div><div class="riga"><span>satelliti su sé stessi</span><span><span id="x-p-rpm">0</span> giri</span></div><div class="riga"><span>ruote</span><span><span id="x-w-rpm">0</span> giri</span></div></div>
+          <p class="nota" style="grid-column:1/-1">Potenza positiva = fornita al rotismo (motore che spinge, batteria che si scarica). Negativa = assorbita (generatore, batteria che si carica). Coppia del termico: 72,2% alla corona, 27,8% al solare. Solare 30 denti, satelliti 23, corona 78.</p>
+        </div>
+
+      </div>
     </details>
 
     <div class="perche">
@@ -327,15 +346,15 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
           <p>In un'auto normale il cambio serve perché il motore rende bene solo tra 1.500 e 4.000 giri, mentre le ruote passano da zero a oltre 1.000 giri. Le marce sono rapporti fissi tra i due, e vanno cambiate.</p>
           <p>Qui il rapporto non è fisso. La regola del rotismo è una sola:</p>
           <span class="formula">108 × giri portatreno = 30 × giri solare + 78 × giri corona</span>
-          <p>Il motore a benzina è sul portatreno, le ruote sulla corona. Il terzo albero, il solare, è libero: MG1 lo fa girare ai giri che servono per far tornare i conti. Così il motore può stare sui giri più efficienti sia a 30 sia a 130 km/h. Il rapporto cambia di continuo, senza scatti. Toyota lo chiama e-CVT, ma non c'è nessuna cinghia: solo questi quattro pezzi. Nel nomogramma lo vedi: la retta si inclina, il punto blu del motore si sposta poco.</p>
+          <p>Il motore a benzina è sul portatreno, le ruote sulla corona. Il terzo albero, il solare, è libero: il generatore lo fa girare ai giri che servono per far tornare i conti. Così il motore può stare sui giri più efficienti sia a 30 sia a 130 km/h. Il rapporto cambia di continuo, senza scatti. Toyota lo chiama e-CVT, ma non c'è nessuna cinghia: solo questi quattro pezzi.</p>
         </div>
       </details>
       <details>
         <summary>Perché non c'è né frizione né motorino di avviamento</summary>
         <div class="corpo">
-          <p>Con il motore spento il portatreno sta fermo. Le ruote girano lo stesso: la corona trascina i satelliti, che fanno girare il solare al contrario. Il solare gira a vuoto e MG1 non oppone resistenza. Per questo l'auto parte in elettrico con il motore fermo e non c'è nessuna frizione da staccare.</p>
-          <p>Quando serve il motore, MG1 fa il lavoro del motorino: frena il solare, il portatreno prende velocità e il motore arriva a 1.000 giri in mezzo secondo. A quel punto entra la benzina. Al semaforo si spegne allo stesso modo, senza strappi.</p>
-          <p>Per la retromarcia non c'è un ingranaggio dedicato: MG2 gira al contrario, e la corona con lui.</p>
+          <p>Con il motore spento il portatreno sta fermo. Le ruote girano lo stesso: la corona trascina i satelliti, che fanno girare il solare al contrario. Il solare gira a vuoto e il generatore non oppone resistenza. Per questo l'auto parte in elettrico con il motore fermo e non c'è nessuna frizione da staccare.</p>
+          <p>Quando serve il motore, il generatore fa il lavoro del motorino: frena il solare, il portatreno prende velocità e il motore arriva a 1.000 giri in mezzo secondo. A quel punto entra la benzina. Al semaforo si spegne allo stesso modo, senza strappi.</p>
+          <p>Per la retromarcia non c'è un ingranaggio dedicato: il motore elettrico gira al contrario, e la corona con lui.</p>
         </div>
       </details>
     </div>
@@ -344,7 +363,7 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
     <div class="cta">
       <div>
         <h2>Vuoi vederlo girare dal vivo?</h2>
-        <p>In salone c'è il modello in plexiglass di questo rotismo. Lo muovi a mano e capisci in un minuto. Poi, se vuoi, provi l'auto.</p>
+        <p>In salone c'è il modello in plexiglass di questo ingranaggio. Lo muovi a mano e capisci in un minuto. Poi, se vuoi, provi l'auto.</p>
       </div>
       <a href="https://www.rivauto.it/prenota-appuntamento/" rel="noopener">Prenota una prova</a>
     </div>
@@ -355,7 +374,7 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
 <footer>
   <div class="contenitore piede">
     <span>Hybrid Synergy Drive e THS II sono marchi di Toyota Motor Corporation. Questa pagina è materiale didattico di <a href="https://www.rivauto.it" rel="noopener">Rivauto</a> e non è una comunicazione ufficiale Toyota.</span>
-    <span>Modello semplificato: solare 30 denti, satelliti 23, corona 78; rapporto finale 3,27; pneumatico 195/65 R15 (diametro 634 mm); motore 72 kW; MG2 53 kW e 400 Nm alla corona; batteria 1,3 kWh. Le rotazioni sono rallentate 60 volte per essere leggibili; i numeri no.</span>
+    <span>Modello semplificato: solare 30 denti, satelliti 23, corona 78; rapporto finale 3,27; pneumatico 195/65 R15 (diametro 634 mm); auto 1.400 kg; motore 72 kW; MG2 53 kW e 400 Nm alla corona; batteria 1,3 kWh. Le rotazioni a schermo sono rallentate; i numeri no.</span>
   </div>
 </footer>
 
@@ -365,43 +384,48 @@ footer{margin-top:60px;padding:26px 0 34px;border-top:1px solid var(--linea)}
 /* ---------- costanti del modello ---------- */
 const Zs=30, Zr=78, Zp=23, Zc=Zs+Zr; // 108
 const FINAL=3.27;                     // rapporto finale corona -> ruote
-const DIAM=0.634;                     // diametro ruota in m (195/65 R15)
+const DIAM=0.634, RW=DIAM/2;          // ruota 195/65 R15
 const KMH_PER_RING_RPM = 3.6*Math.PI*DIAM/60/FINAL;
 const ENG_PMAX=72, MG2_PMAX=53, MG2_TMAX=400, MG1_RPM_MAX=10000; // MG2: coppia riferita alla corona
-const SYS_PMAX=100, REGEN_PMAX=30, ENG_FRIC=25, ENG_J=0.2, BATT_KWH=1.3;
+const SYS_PMAX=100, ENG_FRIC=25, ENG_J=0.2, BATT_KWH=1.3;
+const T_RING_MAX=520, T_REGEN=200, F_BRAKE=2000;   // Nm alla corona, N ai freni
+const MASSA=1400, CRR=0.011, CDA=0.5*1.2*0.27*2.2; // dinamica del veicolo
 const EV_VMAX=70;                      // sopra, il termico gira comunque
 const reduced = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-// con "riduci movimento" attivo gli ingranaggi girano a un quarto della velocità e i flussi restano fermi
-const VIS_SCALE = reduced ? 1/240 : 1/60;   // rallentamento visivo delle rotazioni
+const VIS_STEPS=[1/30,1/60,1/120,1/240];
+let visScale = reduced ? 1/240 : 1/60;
 
 /* ---------- stato ---------- */
-const S={ vSet:0, v:0, pedal:0, soc:60, rev:false, engRpm:0, hold:0, thS:0, thC:0, thR:0, thP:0 };
+const S={ v:0, pedal:0, soc:60, rev:false, engRpm:0, hold:0, thS:0, thC:0, thR:0, thP:0 };
 let out={};
-
-/* ---------- mappa motore ---------- */
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 function engRpmFromP(P){ return 1000+4200*Math.pow(Math.max(P,0)/ENG_PMAX,0.85); }
 function engPFromRpm(r){ return r<=1000?0:ENG_PMAX*Math.pow((r-1000)/4200,1/0.85); }
-const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 
 /* ---------- fisica, un passo ---------- */
 function step(dt){
-  const target = S.rev ? -S.vSet : S.vSet;
-  S.v += (target-S.v)*Math.min(1,dt*3);
-  if(Math.abs(target-S.v)<0.05) S.v=target;
   if(S.hold>0) S.hold-=dt;
-
-  const wr = S.v/KMH_PER_RING_RPM;                 // giri corona
-  const Preq = S.pedal>=0 ? S.pedal/100*SYS_PMAX : S.pedal/100*REGEN_PMAX;
+  const v=S.v, vms=v/3.6, sgn=v>0.05?1:(v<-0.05?-1:0);
+  const wr = v/KMH_PER_RING_RPM;                       // giri corona
+  const dir = S.rev?-1:1;
+  // richiesta del pedale, in coppia alla corona, limitata dai 100 kW di sistema
+  let Treq;
+  if(S.pedal>=0){
+    const tcap = Math.abs(wr)>1 ? Math.min(T_RING_MAX, SYS_PMAX*9549/Math.abs(wr)) : T_RING_MAX;
+    Treq = S.pedal/100*tcap*dir;
+  } else {
+    Treq = sgn===0 ? 0 : S.pedal/100*T_REGEN*sgn;      // il freno si oppone al moto
+  }
+  const Preq = Math.max(0, Treq*wr/9549);              // kW chiesti alle ruote
   const soc=S.soc;
-  const evThr = soc>50?25: soc>35?12: soc>25?5:0;   // kW in solo elettrico
+  const evThr = soc>50?32: soc>35?18: soc>25?8:0;      // pedale % oltre cui serve il termico
   const needCharge = soc<30;
-  const engineWanted = S.hold<=0 && ( (Preq>0 && Preq>evThr) || Math.abs(S.v)>EV_VMAX || needCharge );
+  const engineWanted = S.hold<=0 && ( (S.pedal>evThr) || Math.abs(v)>EV_VMAX || needCharge );
 
   let PengT=0, rpmT=0;
   if(engineWanted){
-    const Pch = needCharge?10 : (Preq>0 && soc<45 ? 4 : 0);
-    PengT = clamp(Math.max(Preq,0)+Pch, 0, ENG_PMAX);
-    // il termico non produce più di quanto MG2 e batteria possono assorbire
+    const Pch = needCharge?10 : (S.pedal>0 && soc<45 ? 4 : 0);
+    PengT = clamp(Preq+Pch, 0, ENG_PMAX);
     const cap = Math.min(MG2_PMAX, MG2_TMAX*Math.abs(wr)/9549) + Pch;
     for(let k=0;k<6;k++){
       const rk=engRpmFromP(PengT), share=1 - Zr*wr/(Zc*rk);
@@ -415,57 +439,50 @@ function step(dt){
   }
   const rate=3000;
   const dr = clamp(rpmT-S.engRpm, -rate*dt, rate*dt);
-  const alpha = dt>0 ? dr/dt*2*Math.PI/60 : 0;      // rad/s^2
-  S.engRpm += dr;
-  if(Math.abs(S.engRpm)<1) S.engRpm=0;
+  const alpha = dt>0 ? dr/dt*2*Math.PI/60 : 0;
+  S.engRpm += dr; if(Math.abs(S.engRpm)<1) S.engRpm=0;
 
-  const wc=S.engRpm;
-  const ws=(Zc*wc - Zr*wr)/Zs;
+  const wc=S.engRpm, ws=(Zc*wc - Zr*wr)/Zs;
   const firing = engineWanted && PengT>0.5 && wc>=900;
   let Tc, Peng;
-  if(firing){
-    Peng = PengT*clamp(wc/rpmT,0,1);
-    Tc = Math.min(Peng*9549/wc, 150);
-    Peng = Tc*wc/9549;
-  } else {
-    Tc = (wc>1 ? -ENG_FRIC : 0) - ENG_J*alpha;      // attrito + inerzia
-    Peng = Tc*wc/9549;
-  }
-  const Ts = -(Zs/Zc)*Tc;                              // coppia di MG1 sul solare
-  const Pmg1 = Ts*ws/9549;                             // + motore, - generatore
-  const PringEng = (Zr/Zc)*Tc*wr/9549;                 // ciò che il termico manda alla corona
-  const mg2cap = Math.min(MG2_PMAX, MG2_TMAX*Math.abs(wr)/9549) * (soc<8 && !firing ? 0 : 1);
-  const Pwheel = clamp(Preq, PringEng-mg2cap, PringEng+mg2cap);
-  const Pmg2 = Pwheel-PringEng;
-  const Tmg2 = Math.abs(wr)>1 ? Pmg2*9549/wr : (S.pedal>0 ? MG2_TMAX*S.pedal/100*(S.rev?-1:1) : 0);
-  const Tr = (Zr/Zc)*Tc + Tmg2;                        // coppia totale che spinge la corona
-  const Pbatt = Pmg1+Pmg2;                             // + scarica, - carica
+  if(firing){ Peng=PengT*clamp(wc/rpmT,0,1); Tc=Math.min(Peng*9549/wc,150); Peng=Tc*wc/9549; }
+  else { Tc=(wc>1?-ENG_FRIC:0) - ENG_J*alpha; Peng=Tc*wc/9549; }
+  const Ts=-(Zs/Zc)*Tc, Pmg1=Ts*ws/9549, TrEng=(Zr/Zc)*Tc, PringEng=TrEng*wr/9549;
+  // MG2: coppia limitata da 400 Nm e 53 kW
+  let Tcap = Math.abs(wr)>1 ? Math.min(MG2_TMAX, MG2_PMAX*9549/Math.abs(wr)) : MG2_TMAX;
+  if(soc<8 && !firing && S.pedal>0) Tcap=0;
+  let Tmg2 = clamp(Treq-TrEng, -Tcap, Tcap);
+  if(S.pedal<0 && soc>97) Tmg2*=0.2;                    // batteria piena: poca rigenerazione
+  const Tr=TrEng+Tmg2, Pmg2=Tmg2*wr/9549, Pwheel=Tr*wr/9549, Pbatt=Pmg1+Pmg2;
   S.soc = clamp(S.soc - Pbatt*dt/3600/BATT_KWH*100, 0, 100);
 
-  const wpRel = -(Zs/Zp)*(ws-wc);                      // satelliti su sé stessi
+  // dinamica: l'auto accelera e frena per davvero
+  let F = Tr*FINAL/RW;
+  if(S.pedal<0) F -= F_BRAKE*(-S.pedal/100)*sgn;
+  const Fdrag = (CRR*MASSA*9.81 + CDA*vms*vms)*sgn;
+  let vn = vms + (F-Fdrag)/MASSA*dt;
+  if(sgn!==0 && S.pedal<=0 && Math.sign(vn)!==sgn) vn=0;     // frenando non si inverte il moto
+  if(Math.abs(vn)<0.15 && S.pedal<=0) vn=0;
+  S.v = clamp(vn*3.6, -30, 160);
+
+  const wpRel=-(Zs/Zp)*(ws-wc);
   const cranking = engineWanted && !firing && dr>0;
   const dragged = engineWanted && !firing && !cranking && wc>=900;
-
   out={wr,ws,wc,wpRel,Tc,Ts,Tr,Tmg2,Peng,Pmg1,Pmg2,Pwheel,PringEng,Pbatt,firing,cranking,dragged,wantFire:PengT>0.5};
 
-  S.thS += ws*VIS_SCALE*6*dt; S.thC += wc*VIS_SCALE*6*dt;
-  S.thR += wr*VIS_SCALE*6*dt; S.thP += wpRel*VIS_SCALE*6*dt;
+  S.thS+=ws*visScale*6*dt; S.thC+=wc*visScale*6*dt; S.thR+=wr*visScale*6*dt; S.thP+=wpRel*visScale*6*dt;
 }
 
 /* ---------- disegno ingranaggi ---------- */
-const MOD=2.8;
-const rS=MOD*Zs/2, rR=MOD*Zr/2, rPc=(rS+rR)/2, rP=(rR-rS)/2;
+const MOD=2.8, rS=MOD*Zs/2, rR=MOD*Zr/2, rPc=(rS+rR)/2, rP=(rR-rS)/2;
 function gearPath(Z, rp, m, internal, phaseDeg){
   const p=2*Math.PI/Z, ph=phaseDeg*Math.PI/180;
-  const tip = internal? rp-m : rp+m;
-  const root= internal? rp+1.25*m : rp-1.25*m;
+  const tip = internal? rp-m : rp+m, root= internal? rp+1.25*m : rp-1.25*m;
   let d="";
   for(let i=0;i<Z;i++){
     const c=ph+i*p;
-    const pts=[[root,c-0.5*p],[root,c-0.38*p],[tip,c-0.2*p],[tip,c+0.2*p],[root,c+0.38*p]];
-    pts.forEach((q,k)=>{
-      const x=q[0]*Math.cos(q[1]), y=q[0]*Math.sin(q[1]);
-      d+=(i===0&&k===0?"M":"L")+x.toFixed(2)+","+y.toFixed(2);
+    [[root,c-0.5*p],[root,c-0.38*p],[tip,c-0.2*p],[tip,c+0.2*p],[root,c+0.38*p]].forEach((q,k)=>{
+      d+=(i===0&&k===0?"M":"L")+(q[0]*Math.cos(q[1])).toFixed(2)+","+(q[0]*Math.sin(q[1])).toFixed(2);
     });
   }
   d+="Z";
@@ -474,17 +491,13 @@ function gearPath(Z, rp, m, internal, phaseDeg){
 }
 document.getElementById("sunPath").setAttribute("d", gearPath(Zs,rS,MOD,false,0));
 document.getElementById("ringPath").setAttribute("d", gearPath(Zr,rR,MOD,true,180/Zr));
-(function(){
-  const a=rPc+16, r=34;
-  document.getElementById("carrierPath").setAttribute("d",
-    `M${-a+r},${-a} H${a-r} A${r},${r} 0 0,1 ${a},${-a+r} V${a-r} A${r},${r} 0 0,1 ${a-r},${a} H${-a+r} A${r},${r} 0 0,1 ${-a},${a-r} V${-a+r} A${r},${r} 0 0,1 ${-a+r},${-a}Z`);
-})();
+(function(){ const a=rPc+16, r=34;
+  document.getElementById("carrierPath").setAttribute("d",`M${-a+r},${-a} H${a-r} A${r},${r} 0 0,1 ${a},${-a+r} V${a-r} A${r},${r} 0 0,1 ${a-r},${a} H${-a+r} A${r},${r} 0 0,1 ${-a},${a-r} V${-a+r} A${r},${r} 0 0,1 ${-a+r},${-a}Z`); })();
 const planets=[];
 (function(){
   const NS="http://www.w3.org/2000/svg", g=document.getElementById("gPlanets"), pd=gearPath(Zp,rP,MOD,false,0);
   for(let j=0;j<4;j++){
-    const phi=j*90;
-    const outer=document.createElementNS(NS,"g"), inner=document.createElementNS(NS,"g");
+    const phi=j*90, outer=document.createElementNS(NS,"g"), inner=document.createElementNS(NS,"g");
     const path=document.createElementNS(NS,"path"); path.setAttribute("d",pd); path.setAttribute("fill","var(--sat)");
     const pin=document.createElementNS(NS,"circle"); pin.setAttribute("r","6"); pin.setAttribute("fill","#14283C"); pin.setAttribute("stroke","var(--sat)"); pin.setAttribute("stroke-width","1.5");
     inner.appendChild(path); inner.appendChild(pin); outer.appendChild(inner); g.appendChild(outer);
@@ -495,33 +508,30 @@ const gSun=document.getElementById("gSun"), gRing=document.getElementById("gRing
 
 /* ---------- riferimenti DOM ---------- */
 const $=id=>document.getElementById(id);
-const el={ vel:$("vel"), ped:$("ped"), soc:$("soc"), rev:$("rev"), hero:$("hero"),
-  velOut:$("velOut"), pedOut:$("pedOut"), socOut:$("socOut"),
+const el={ vel:$("vel"), ped:$("ped"), soc:$("soc"), rev:$("rev"), vis:$("vis"), hero:$("hero"),
+  velOut:$("velOut"), pedOut:$("pedOut"), socOut:$("socOut"), visOut:$("visOut"),
   nLine:$("nLine"), nS:$("nS"), nC:$("nC"), nR:$("nR"), nSt:$("nSt"), nCt:$("nCt"), nRt:$("nRt"),
   fEng:$("f-eng2"), fMg1:$("f-mg12"), fMg2:$("f-mg2"), fWhl:$("f-whl"), eMg1:$("e-mg1"), eMg2:$("e-mg2"),
   lEng:$("l-eng"), lMg1:$("l-mg1"), lMg2:$("l-mg2"), lWhl:$("l-whl"), lEmg1:$("l-emg1"), lEmg2:$("l-emg2"),
   tBatt:$("t-batt"), tMg1r:$("t-mg1r"), tEngr:$("t-engr"), tMg2p:$("t-mg2p"), tWhl:$("t-whl"),
-  kEng:$("k-eng"), kEngS:$("k-eng-s"), kMg1:$("k-mg1"), kMg1S:$("k-mg1-s"), kRing:$("k-ring"), kRingS:$("k-ring-s"), kBatt:$("k-batt"), kBattS:$("k-batt-s"),
-  status:$("statusText"), expDet:$("dettEsperto") };
-const X={};
-["c-rpm","c-nm","c-kw","s-rpm","s-nm","s-kw","r-rpm","r-nm","r-kw","m2-kw","b-kw","p-rpm","w-rpm"].forEach(k=>X[k]=$("x-"+k));
-
+  sVel:$("s-vel"), sVelS:$("s-vel-s"), sEng:$("s-eng"), sEngS:$("s-eng-s"), spiaEng:$("spia-eng"),
+  sMot:$("s-mot"), sMotS:$("s-mot-s"), spiaMot:$("spia-mot"), sBatt:$("s-batt"), sBattB:$("s-batt-b"), sBattS:$("s-batt-s"),
+  status:$("statusText"), dett:$("dettagli"), capTesto:$("capTesto"), riprendi:$("riprendi") };
+const X={}; ["c-rpm","c-nm","c-kw","s-rpm","s-nm","s-kw","r-rpm","r-nm","r-kw","m2-kw","b-kw","p-rpm","w-rpm"].forEach(k=>X[k]=$("x-"+k));
 const fmt=(x,d=0)=>{ const m=Math.pow(10,d); let r=Math.round(x*m)/m; if(r===0) r=0; return r.toLocaleString("it-IT",{minimumFractionDigits:d,maximumFractionDigits:d}); };
 const kw=x=>fmt(x,1)+" kW";
 
 /* ---------- flussi ---------- */
 const dash={};
 function flow(path,label,P,dir,text,arrows,dt){
-  const a=Math.abs(P);
-  const w = a<0.2 ? 1.5 : 2.5+Math.min(a,60)/6;
-  path.setAttribute("stroke-width",w.toFixed(1));
-  path.setAttribute("opacity", a<0.2?0.3:1);
-  dash[path.id]=(dash[path.id]||0) - (reduced?0:dir*Math.min(a,60)*dt*3);
+  const a=Math.abs(P), w=a<0.2?1.5:2.5+Math.min(a,60)/6;
+  path.setAttribute("stroke-width",w.toFixed(1)); path.setAttribute("opacity",a<0.2?0.3:1);
+  dash[path.id]=(dash[path.id]||0)-(reduced?0:dir*Math.min(a,60)*dt*3);
   path.setAttribute("stroke-dashoffset",dash[path.id].toFixed(1));
-  label.textContent = a<0.2 ? "" : text+" "+(dir>0?arrows[0]:arrows[1]);
+  label.textContent=a<0.2?"":text+" "+(dir>0?arrows[0]:arrows[1]);
 }
 
-/* ---------- aggiornamento vista ---------- */
+/* ---------- vista ---------- */
 let heroClass="";
 function render(dt){
   gSun.setAttribute("transform",`rotate(${S.thS.toFixed(2)})`);
@@ -531,46 +541,55 @@ function render(dt){
     p.outer.setAttribute("transform",`rotate(${(S.thC+p.phi).toFixed(2)}) translate(${rPc.toFixed(2)},0)`);
     p.inner.setAttribute("transform",`rotate(${(S.thP+p.off).toFixed(2)})`);
   });
-  const y=r=>160 - clamp(r,-13000,13000)*0.01;
-  const yS=y(out.ws), yR=y(out.wr), yC=y(out.wc), k=(yR-yS)/280;
-  el.nS.setAttribute("cy",yS); el.nR.setAttribute("cy",yR); el.nC.setAttribute("cy",yC);
-  el.nLine.setAttribute("x1",30); el.nLine.setAttribute("y1",yS-20*k);
-  el.nLine.setAttribute("x2",350); el.nLine.setAttribute("y2",yR+20*k);
-  el.nSt.textContent=fmt(out.ws); el.nCt.textContent=fmt(out.wc); el.nRt.textContent=fmt(out.wr);
+  const o=out, v=S.v;
+  flow(el.fEng, el.lEng, o.Peng, o.Peng>=0?1:-1, kw(Math.abs(o.Peng)), ["↙","↗"], dt);
+  flow(el.fMg1, el.lMg1, o.Pmg1, o.Pmg1>=0?1:-1, kw(Math.abs(o.Pmg1)), ["↘","↖"], dt);
+  flow(el.fMg2, el.lMg2, o.Pmg2, o.Pmg2>=0?1:-1, kw(Math.abs(o.Pmg2)), ["◀","▶"], dt);
+  flow(el.fWhl, el.lWhl, o.Pwheel, o.Pwheel>=0?1:-1, kw(Math.abs(o.Pwheel)), ["↘","↖"], dt);
+  flow(el.eMg1, el.lEmg1, o.Pmg1, o.Pmg1>=0?-1:1, kw(Math.abs(o.Pmg1)), ["▶","◀"], dt);
+  flow(el.eMg2, el.lEmg2, o.Pmg2, o.Pmg2>=0?-1:1, kw(Math.abs(o.Pmg2)), ["◀","▶"], dt);
 
-  flow(el.fEng, el.lEng, out.Peng, out.Peng>=0?1:-1, kw(Math.abs(out.Peng)), ["↙","↗"], dt);
-  flow(el.fMg1, el.lMg1, out.Pmg1, out.Pmg1>=0?1:-1, kw(Math.abs(out.Pmg1)), ["↘","↖"], dt);
-  flow(el.fMg2, el.lMg2, out.Pmg2, out.Pmg2>=0?1:-1, kw(Math.abs(out.Pmg2)), ["◀","▶"], dt);
-  flow(el.fWhl, el.lWhl, out.Pwheel, out.Pwheel>=0?1:-1, kw(Math.abs(out.Pwheel)), ["↘","↖"], dt);
-  flow(el.eMg1, el.lEmg1, out.Pmg1, out.Pmg1>=0?-1:1, kw(Math.abs(out.Pmg1)), ["▶","◀"], dt);
-  flow(el.eMg2, el.lEmg2, out.Pmg2, out.Pmg2>=0?-1:1, kw(Math.abs(out.Pmg2)), ["◀","▶"], dt);
+  // scatole nello schema, in parole
+  el.tBatt.textContent = Math.abs(o.Pbatt)<0.2 ? fmt(S.soc)+"%" : (o.Pbatt>0?"si scarica, ":"si carica, ")+fmt(S.soc)+"%";
+  el.tMg1r.textContent = Math.abs(o.Pmg1)<0.2 ? "a vuoto" : (o.Pmg1>0?"spinge ":"genera ")+kw(Math.abs(o.Pmg1));
+  el.tEngr.textContent = o.firing ? "acceso, "+kw(o.Peng) : o.cranking&&o.wantFire ? "si accende" : o.wc>50 ? "gira senza benzina" : "spento";
+  el.tMg2p.textContent = Math.abs(o.Pmg2)<0.2 ? "fermo" : (o.Pmg2>0?"spinge ":"ricarica ")+kw(Math.abs(o.Pmg2));
+  el.tWhl.textContent = fmt(Math.abs(v))+" km/h"+(v<-0.5?" indietro":"");
 
-  const battTxt = Math.abs(out.Pbatt)<0.2 ? "0 kW" : (out.Pbatt>0? "si scarica "+kw(out.Pbatt) : "si carica "+kw(-out.Pbatt));
-  const engTxt = out.firing ? fmt(out.wc)+" giri" : out.wc>50 ? fmt(out.wc)+" giri, senza benzina" : "spento";
-  el.tBatt.textContent = battTxt;
-  el.tMg1r.textContent = fmt(out.ws)+" giri";
-  el.tEngr.textContent = engTxt;
-  el.tMg2p.textContent = Math.abs(out.Pmg2)<0.2 ? "0 kW" : (out.Pmg2>0?"spinge ":"genera ")+kw(Math.abs(out.Pmg2));
-  el.tWhl.textContent = fmt(Math.abs(S.v))+" km/h"+(S.v<-0.5?" (indietro)":"");
+  // le quattro carte
+  el.sVel.textContent=fmt(Math.abs(v));
+  el.sVelS.textContent = Math.abs(v)<0.5 ? "ferma" : v<0 ? "in retromarcia" : Math.abs(o.Pwheel)<0.3 ? "in scorrimento" : o.Pwheel<0 ? "sta frenando" : "in marcia";
+  let e="Spento", es="non consuma", ec="";
+  if(o.firing){ e="Acceso"; es=Math.abs(o.wr)<1?"ricarica la batteria":"spinge insieme all'elettrico"; ec="on"; if(o.Pmg2<-0.5 && o.ws<-50) es="da solo, in autostrada"; else if(o.Pmg2<3) es="da solo, ai giri migliori"; }
+  else if(o.cranking&&o.wantFire){ e="Si accende"; es="senza scossoni, mezzo secondo"; ec="avvio"; }
+  else if(o.wc>50){ e="Gira a vuoto"; es="senza benzina, sopra i 70 km/h"; ec="avvio"; }
+  el.sEng.textContent=e; el.sEngS.textContent=es; el.spiaEng.className="spia "+ec;
+  let m="Fermo", ms="", mc="";
+  if(o.Pmg2>0.3){ m="Spinge"; ms=o.firing?"aggiunge "+kw(o.Pmg2):"da solo, in silenzio"; mc="on"; }
+  else if(o.Pmg2<-0.3){ m="Ricarica"; ms=o.Pwheel<-0.3?"frenando, "+kw(-o.Pmg2):"riprende "+kw(-o.Pmg2); mc="verde"; }
+  else if(Math.abs(v)>0.5){ m="A riposo"; ms="l'auto scorre"; }
+  el.sMot.textContent=m; el.sMotS.textContent=ms; el.spiaMot.className="spia "+mc;
+  el.sBatt.textContent=fmt(S.soc); el.sBattB.style.width=fmt(S.soc)+"%";
+  el.sBattS.textContent = Math.abs(o.Pbatt)<0.2 ? "ferma" : o.Pbatt>0 ? "si scarica" : "si carica";
 
-  // contatori sotto il cielo
-  el.kEng.textContent=fmt(out.wc);
-  el.kEngS.textContent = out.firing ? "acceso, "+kw(out.Peng) : out.wc>50 ? "trascinato, senza benzina" : "spento";
-  el.kMg1.textContent=fmt(out.ws);
-  el.kMg1S.textContent = Math.abs(out.Pmg1)<0.2 ? "gira a vuoto" : (out.Pmg1>0 ? "motore, "+kw(out.Pmg1) : "generatore, "+kw(-out.Pmg1));
-  el.kRing.textContent=fmt(out.wr);
-  el.kRingS.textContent = fmt(Math.abs(S.v))+" km/h"+(S.v<-0.5?" indietro":"")+", "+kw(Math.abs(out.Pwheel))+(out.Pwheel<-0.2?" recuperati":"");
-  el.kBatt.textContent=fmt(Math.abs(out.Pbatt),1);
-  el.kBattS.textContent = Math.abs(out.Pbatt)<0.2 ? "ferma, "+fmt(S.soc)+"%" : (out.Pbatt>0?"si scarica, ":"si carica, ")+fmt(S.soc)+"%";
-
-  // cielo che cambia con la modalità
-  const cls = out.Pwheel<-0.2 && !out.firing ? "rigenera" : (out.firing && Math.abs(out.wr)<1) ? "ricarica" : (out.firing||out.dragged||out.cranking) ? "termico" : "";
+  const cls = o.Pwheel<-0.2 && !o.firing ? "rigenera" : (o.firing && Math.abs(o.wr)<1) ? "ricarica" : (o.firing||o.dragged||o.cranking) ? "termico" : "";
   if(cls!==heroClass){ el.hero.className="hero"+(cls?" "+cls:""); heroClass=cls; }
 
-  el.socOut.textContent=fmt(S.soc)+"%";
-  if(document.activeElement!==el.soc) el.soc.value=Math.round(S.soc);
-  el.status.textContent=statusText();
-  if(el.expDet.open) renderExpert();
+  el.pedOut.textContent=(S.pedal>0?"+":"")+fmt(S.pedal)+"%";
+  if(document.activeElement!==el.ped) el.ped.value=Math.round(S.pedal);
+  if(el.dett.open){
+    el.velOut.textContent=fmt(Math.abs(v))+" km/h"; if(document.activeElement!==el.vel) el.vel.value=Math.round(Math.abs(v));
+    el.socOut.textContent=fmt(S.soc)+"%"; if(document.activeElement!==el.soc) el.soc.value=Math.round(S.soc);
+    const y=r=>160-clamp(r,-13000,13000)*0.01, yS=y(o.ws), yR=y(o.wr), yC=y(o.wc), k=(yR-yS)/280;
+    el.nS.setAttribute("cy",yS); el.nR.setAttribute("cy",yR); el.nC.setAttribute("cy",yC);
+    el.nLine.setAttribute("x1",30); el.nLine.setAttribute("y1",yS-20*k); el.nLine.setAttribute("x2",350); el.nLine.setAttribute("y2",yR+20*k);
+    el.nSt.textContent=fmt(o.ws); el.nCt.textContent=fmt(o.wc); el.nRt.textContent=fmt(o.wr);
+    el.status.textContent=statusText();
+    X["c-rpm"].textContent=fmt(o.wc); X["c-nm"].textContent=fmt(o.Tc); X["c-kw"].textContent=fmt(o.Peng,1);
+    X["s-rpm"].textContent=fmt(o.ws); X["s-nm"].textContent=fmt(o.Ts); X["s-kw"].textContent=fmt(o.Pmg1,1);
+    X["r-rpm"].textContent=fmt(o.wr); X["r-nm"].textContent=fmt(o.Tr); X["r-kw"].textContent=fmt(o.Pwheel,1); X["m2-kw"].textContent=fmt(o.Pmg2,1);
+    X["b-kw"].textContent=fmt(o.Pbatt,1); X["p-rpm"].textContent=fmt(o.wpRel); X["w-rpm"].textContent=fmt(o.wr/FINAL);
+  }
 }
 
 function statusText(){
@@ -589,73 +608,66 @@ function statusText(){
   return "Crociera: la potenza del termico va per il 72% alla corona; il 28% passa per MG1 e torna alla corona via MG2.";
 }
 
-function renderExpert(){
-  const o=out;
-  X["c-rpm"].textContent=fmt(o.wc); X["c-nm"].textContent=fmt(o.Tc); X["c-kw"].textContent=fmt(o.Peng,1);
-  X["s-rpm"].textContent=fmt(o.ws); X["s-nm"].textContent=fmt(o.Ts); X["s-kw"].textContent=fmt(o.Pmg1,1);
-  X["r-rpm"].textContent=fmt(o.wr); X["r-nm"].textContent=fmt(o.Tr); X["r-kw"].textContent=fmt(o.Pwheel,1); X["m2-kw"].textContent=fmt(o.Pmg2,1);
-  X["b-kw"].textContent=fmt(o.Pbatt,1); X["p-rpm"].textContent=fmt(o.wpRel); X["w-rpm"].textContent=fmt(o.wr/FINAL);
-}
-
-/* ---------- scenari ---------- */
-const SCEN=[
-  {n:"Partenza in elettrico",v:15,p:20,s:60,r:false,
-   t:"Il termico è fermo, quindi il portatreno è fermo. MG2 spinge la corona e la corona spinge le ruote. Il solare gira al contrario e a vuoto: nessuna frizione da staccare, nessuno strappo."},
-  {n:"Avviamento del termico",v:30,p:45,s:55,r:false,restart:true,
-   t:"Serve più potenza. MG1 frena il solare, il portatreno prende velocità e il motore arriva a 1.000 giri in mezzo secondo. Poi entra la benzina. È MG1 il motorino di avviamento."},
-  {n:"Accelerazione a fondo",v:40,p:100,s:60,r:false,
-   t:"Il termico sale ai giri di massima potenza, MG1 gira veloce e genera. MG2 aggiunge quello che manca prendendolo dalla batteria. Alle ruote arriva la somma."},
-  {n:"Crociera in autostrada",v:110,p:22,s:60,r:false,
-   t:"Il termico resta sui giri più efficienti mentre la corona va molto più veloce. Il 72% della coppia va dritto alle ruote, il resto passa per MG1 e torna via MG2."},
-  {n:"Ricircolo ad alta velocità",v:150,p:22,s:60,r:false,
-   t:"La corona va così forte che il solare gira al contrario. MG1 diventa un motore e MG2 un generatore: una parte della potenza fa un giro in più, in forma elettrica."},
-  {n:"Frenata rigenerativa",v:60,p:-60,s:55,r:false,
-   t:"Alzi il piede o freni: la corona trascina MG2, che lavora da generatore. L'energia che nei freni normali diventa calore qui torna in batteria. Il termico è spento."},
-  {n:"Retromarcia",v:8,p:15,s:60,r:true,
-   t:"Non c'è un ingranaggio della retro. MG2 gira al contrario e con lui la corona. Il portatreno resta fermo, il solare gira in avanti."},
-  {n:"Ricarica da fermo",v:0,p:0,s:20,r:false,
-   t:"Batteria bassa, auto ferma. Il termico gira, la corona è bloccata dalle ruote: tutta la potenza passa per il solare e MG1 la trasforma in corrente."}
+/* ---------- il tragitto ---------- */
+const CAP=[
+  {n:"Parti", p:30, dur:7, start:true,
+   t:"Premi piano: parte solo l'elettrico. Il motore a benzina è spento, e non lo senti."},
+  {n:"Serve più spinta", p:80, dur:9,
+   t:"Premi di più: il motore a benzina si accende da solo, senza scossoni, e lavora insieme all'elettrico."},
+  {n:"In autostrada", p:16, dur:9,
+   t:"In velocità comanda la benzina, sempre ai giri migliori. Niente marce: il rapporto cambia da solo."},
+  {n:"Freni", p:-75, dur:16, stop:true,
+   t:"Alzi il piede o freni: le ruote fanno girare il motore elettrico al contrario, e la batteria si ricarica."},
+  {n:"Al semaforo", p:0, dur:5,
+   t:"Fermo: tutto spento, zero consumi. Riparti in elettrico, e si ricomincia."}
 ];
-const scenBox=$("scen"), scenText=$("scenText");
-const scenBtns=[];
-function applyScenario(i,fromClick){
-  const sc=SCEN[i];
-  S.vSet=sc.v; S.pedal=sc.p; S.soc=sc.s; S.rev=sc.r;
-  if(sc.restart){ S.engRpm=0; S.hold=0.9; }
-  el.vel.value=sc.v; el.ped.value=sc.p; el.soc.value=sc.s; el.rev.checked=sc.r;
-  syncOutputs();
-  scenBtns.forEach((b,k)=>b.setAttribute("aria-pressed",k===i?"true":"false"));
-  scenText.innerHTML="<b>"+sc.n+".</b> "+sc.t;
-  if(fromClick){ const b=scenBtns[i]; scenBox.scrollTo({left:b.offsetLeft-scenBox.offsetLeft-12, behavior: reduced?"auto":"smooth"}); }
-}
-SCEN.forEach((sc,i)=>{
-  const b=document.createElement("button");
-  b.type="button"; b.className="tab"; b.textContent=sc.n; b.setAttribute("aria-pressed","false");
-  b.addEventListener("click",()=>applyScenario(i,true));
-  scenBox.appendChild(b); scenBtns.push(b);
+const capBox=$("capitoli"), capLinea=$("capLinea"), capBtns=[];
+let capI=-1, capT=0, auto=true;
+CAP.forEach((c,i)=>{
+  const b=document.createElement("button"); b.type="button"; b.className="passo"; b.setAttribute("aria-pressed","false");
+  b.innerHTML='<span class="pallino" aria-hidden="true">'+(i+1)+'</span><span class="eti">'+c.n+'</span>';
+  b.addEventListener("click",()=>{ auto=true; goCap(i); setModo(); });
+  capBox.appendChild(b); capBtns.push(b);
 });
-function clearScenario(){ scenBtns.forEach(b=>b.setAttribute("aria-pressed","false")); }
+function setLinea(i,t){ capLinea.style.width=(Math.max(0,Math.min(1,(i+t)/(CAP.length-1)))*80)+"%"; }
+function goCap(i){
+  capI=i; capT=0; const c=CAP[i];
+  S.pedal=c.p; S.rev=false;
+  if(c.start){ S.v=0; S.engRpm=0; S.hold=0.4; if(S.soc<40) S.soc=58; }
+  capBtns.forEach((b,k)=>{ b.setAttribute("aria-pressed",k===i?"true":"false"); b.classList.toggle("fatto",k<i); });
+  el.capTesto.textContent=c.t; setLinea(i,0);
+}
+function tickCap(dt){
+  if(!auto) return;
+  if(capI<0){ goCap(0); return; }
+  const c=CAP[capI]; capT+=dt;
+  let done = capT>=c.dur;
+  if(c.stop){ if(Math.abs(S.v)<0.5){ S.pedal=0; done = done || capT>=3; } else done=false; if(capT>c.dur) { S.v=0; S.pedal=0; done=true; } }
+  setLinea(capI, Math.min(1,capT/c.dur));
+  if(done) goCap((capI+1)%CAP.length);
+}
+function setModo(){
+  el.riprendi.hidden = auto;
+}
+function manual(){ if(auto){ auto=false; capBtns.forEach(b=>{ b.setAttribute("aria-pressed","false"); b.classList.remove("fatto"); }); capLinea.style.width="0"; el.capTesto.textContent="Adesso guidi tu. Guarda le quattro carte qui sopra: cambiano con quello che fai."; setModo(); } }
+el.riprendi.addEventListener("click",()=>{ auto=true; goCap(0); setModo(); });
 
 /* ---------- comandi ---------- */
-function syncOutputs(){
-  el.velOut.textContent=fmt(S.vSet)+" km/h";
-  el.pedOut.textContent=(S.pedal>0?"+":"")+fmt(S.pedal)+"%";
-  el.socOut.textContent=fmt(S.soc)+"%";
-}
-el.vel.addEventListener("input",()=>{S.vSet=+el.vel.value; syncOutputs(); clearScenario();});
-el.ped.addEventListener("input",()=>{S.pedal=+el.ped.value; syncOutputs(); clearScenario();});
-el.soc.addEventListener("input",()=>{S.soc=+el.soc.value; syncOutputs(); clearScenario();});
-el.rev.addEventListener("change",()=>{S.rev=el.rev.checked; clearScenario();});
-el.expDet.addEventListener("toggle",()=>{ if(el.expDet.open) renderExpert(); });
+el.ped.addEventListener("input",()=>{ manual(); S.pedal=+el.ped.value; });
+el.vel.addEventListener("input",()=>{ manual(); S.v=(S.rev?-1:1)*(+el.vel.value); });
+el.soc.addEventListener("input",()=>{ manual(); S.soc=+el.soc.value; });
+el.rev.addEventListener("change",()=>{ manual(); S.rev=el.rev.checked; S.v=(S.rev?-1:1)*Math.abs(S.v); });
+el.vis.addEventListener("input",()=>{ visScale=VIS_STEPS[+el.vis.value-1]; el.visOut.textContent="1/"+Math.round(1/visScale); });
+el.dett.addEventListener("toggle",()=>{ if(el.dett.open) render(0); });
 
 /* ---------- ciclo ---------- */
 let last=performance.now();
 function loop(now){
   const dt=Math.min(0.05,(now-last)/1000); last=now;
-  step(dt); render(dt);
+  tickCap(dt); step(dt); render(dt);
   requestAnimationFrame(loop);
 }
-applyScenario(0);
+goCap(0); setModo();
 step(0.001); render(0.001);
 requestAnimationFrame(loop);
 })();
